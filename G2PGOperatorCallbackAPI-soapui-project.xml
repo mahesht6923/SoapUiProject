@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e7798ef4-83ba-4e2d-8bbe-59b06912d3a4" activeEnvironment="Default" name="G2PGOperatorCallbackAPI" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="b9a8c4de-8caf-451a-9996-0292a1cac375" wsaVersion="NONE" name="G2PGCustomerCallbackAPIPortBinding" type="wsdl" bindingName="{http://com.finsoft.g2pg}G2PGCustomerCallbackAPIPortBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/c-tangutm/Documents/NewHire/Laura/Resort%20Wallet/Automation%20Tool/SoapUI/wsdl/G2PGCustomerCallbackAPI1.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\c-tangutm\Documents\NewHire\Laura\Resort%20Wallet\Automation%20Tool\SoapUI\wsdl\G2PGCustomerCallbackAPI1.wsdl"><con:part><con:url>file:\C:\Users\c-tangutm\Documents\NewHire\Laura\Resort%20Wallet\Automation%20Tool\SoapUI\wsdl\G2PGCustomerCallbackAPI1.wsdl</con:url><con:content><![CDATA[<definitions name="G2PGCustomerCallbackAPI" targetNamespace="http://com.finsoft.g2pg" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://com.finsoft.g2pg" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema targetNamespace="http://com.finsoft.g2pg" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="CusGetBalancesRequest" nillable="true" type="tns:CusGetBalancesRequest"/>
+      <xs:element name="CusGetBalancesResponse" nillable="true" type="tns:CusGetBalancesResponse"/>
+      <xs:element name="CusGetInstructionDetailsRequest" nillable="true" type="tns:CusGetInstructionDetailsRequest"/>
+      <xs:element name="CusGetInstructionDetailsResponse" nillable="true" type="tns:CusGetInstructionDetailsResponse"/>
+      <xs:element name="CusGetSessionRequest" nillable="true" type="tns:CusGetSessionRequest"/>
+      <xs:element name="CusGetSessionResponse" nillable="true" type="tns:CusGetSessionResponse"/>
+      <xs:element name="InternalError" type="tns:InternalError"/>
+      <xs:element name="InvalidAccountNumber" type="tns:InvalidAccountNumber"/>
+      <xs:element name="InvalidRequest" type="tns:InvalidRequest"/>
+      <xs:element name="InvalidSession" type="tns:InvalidSession"/>
+      <xs:element name="PlayerDetailNotSupported" type="tns:PlayerDetailNotSupported"/>
+      <xs:element name="SessionExpired" type="tns:SessionExpired"/>
+      <xs:complexType name="CusGetInstructionDetailsRequest">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="instructionDataItems" type="tns:InstructionDataItem"/>
+          <xs:element name="sessionToken" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InstructionDataItem">
+        <xs:sequence>
+          <xs:element name="type" type="tns:InstructionDataItemType"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CusGetInstructionDetailsResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="instructionDataItems" type="tns:InstructionDataItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InvalidRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InvalidSession">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SessionExpired">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PlayerDetailNotSupported">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InternalError">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CusGetSessionRequest">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string"/>
+          <xs:element name="tempSession" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CusGetSessionResponse">
+        <xs:sequence>
+          <xs:element name="customerData" type="tns:CustomerData"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="sessionAttributes" type="tns:SessionAttribute"/>
+          <xs:element name="sessionToken" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CustomerData">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="accounts" type="tns:AccountData"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="attributes" type="tns:CustomerAttribute"/>
+          <xs:element name="currencyId" type="xs:string"/>
+          <xs:element name="customerId" type="xs:string"/>
+          <xs:element name="displayName" type="xs:string"/>
+          <xs:element name="languageId" type="xs:string"/>
+          <xs:element name="systemCustomerSegmentCode" type="xs:string"/>
+          <xs:element name="systemPartnerCode" type="xs:string"/>
+          <xs:element name="systemVerificationState" nillable="true" type="xs:string"/>
+          <xs:element name="username" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AccountData">
+        <xs:sequence>
+          <xs:element name="accountNumber" type="xs:string"/>
+          <xs:element name="dateClosed" nillable="true" type="xs:dateTime"/>
+          <xs:element name="systemAccountType" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CustomerAttribute">
+        <xs:sequence>
+          <xs:element name="type" type="xs:string"/>
+          <xs:element name="value" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SessionAttribute">
+        <xs:sequence>
+          <xs:element name="type" type="xs:string"/>
+          <xs:element name="value" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CusGetBalancesRequest">
+        <xs:sequence>
+          <xs:element name="customerIds" nillable="true" type="tns:CustomerIDsRecord"/>
+          <xs:element name="sessionToken" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CustomerIDsRecord">
+        <xs:sequence>
+          <xs:element name="accountNumber" type="xs:string"/>
+          <xs:element name="customerId" type="xs:string"/>
+          <xs:element name="systemAccountType" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CusGetBalancesResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="accountBalances" type="tns:AccountBalance"/>
+          <xs:element name="currencyId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AccountBalance">
+        <xs:sequence>
+          <xs:element name="type" type="xs:string"/>
+          <xs:element name="value" nillable="true" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InvalidAccountNumber">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="InstructionDataItemType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Title"/>
+          <xs:enumeration value="FirstName"/>
+          <xs:enumeration value="LastName"/>
+          <xs:enumeration value="DateOfBirth"/>
+          <xs:enumeration value="StreetAddress"/>
+          <xs:enumeration value="City"/>
+          <xs:enumeration value="PostCode"/>
+          <xs:enumeration value="State"/>
+          <xs:enumeration value="CountryId"/>
+          <xs:enumeration value="FixedPhone"/>
+          <xs:enumeration value="MobilePhone"/>
+          <xs:enumeration value="Email"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </types>
+  <message name="InvalidRequest">
+    <part element="tns:InvalidRequest" name="fault"></part>
+  </message>
+  <message name="cusGetSession">
+    <part element="tns:CusGetSessionRequest" name="CusGetSessionRequest"></part>
+  </message>
+  <message name="cusGetSessionResponse">
+    <part element="tns:CusGetSessionResponse" name="CusGetSessionResponse"></part>
+  </message>
+  <message name="InvalidAccountNumber">
+    <part element="tns:InvalidAccountNumber" name="fault"></part>
+  </message>
+  <message name="cusGetBalancesResponse">
+    <part element="tns:CusGetBalancesResponse" name="CusGetBalancesResponse"></part>
+  </message>
+  <message name="cusGetInstructionDetailsResponse">
+    <part element="tns:CusGetInstructionDetailsResponse" name="CusGetInstructionDetailsResponse"></part>
+  </message>
+  <message name="PlayerDetailNotSupported">
+    <part element="tns:PlayerDetailNotSupported" name="fault"></part>
+  </message>
+  <message name="cusGetBalances">
+    <part element="tns:CusGetBalancesRequest" name="CusGetBalancesRequest"></part>
+  </message>
+  <message name="SessionExpired">
+    <part element="tns:SessionExpired" name="fault"></part>
+  </message>
+  <message name="InvalidSession">
+    <part element="tns:InvalidSession" name="fault"></part>
+  </message>
+  <message name="InternalError">
+    <part element="tns:InternalError" name="fault"></part>
+  </message>
+  <message name="cusGetInstructionDetails">
+    <part element="tns:CusGetInstructionDetailsRequest" name="CusGetInstructionDetailsRequest"></part>
+  </message>
+  <portType name="G2PGCustomerCallbackAPI">
+    <operation name="cusGetSession">
+      <input message="tns:cusGetSession" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetSessionRequest"></input>
+      <output message="tns:cusGetSessionResponse" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetSessionResponse"></output>
+      <fault message="tns:SessionExpired" name="SessionExpired" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetSession/Fault/SessionExpired"></fault>
+      <fault message="tns:InvalidRequest" name="InvalidRequest" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetSession/Fault/InvalidRequest"></fault>
+      <fault message="tns:InternalError" name="InternalError" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetSession/Fault/InternalError"></fault>
+      <fault message="tns:InvalidSession" name="InvalidSession" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetSession/Fault/InvalidSession"></fault>
+    </operation>
+    <operation name="cusGetBalances">
+      <input message="tns:cusGetBalances" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetBalancesRequest"></input>
+      <output message="tns:cusGetBalancesResponse" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetBalancesResponse"></output>
+      <fault message="tns:InvalidAccountNumber" name="InvalidAccountNumber" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetBalances/Fault/InvalidAccountNumber"></fault>
+      <fault message="tns:InvalidRequest" name="InvalidRequest" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetBalances/Fault/InvalidRequest"></fault>
+      <fault message="tns:InternalError" name="InternalError" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetBalances/Fault/InternalError"></fault>
+      <fault message="tns:InvalidSession" name="InvalidSession" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetBalances/Fault/InvalidSession"></fault>
+    </operation>
+    <operation name="cusGetInstructionDetails">
+      <input message="tns:cusGetInstructionDetails" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetInstructionDetailsRequest"></input>
+      <output message="tns:cusGetInstructionDetailsResponse" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetInstructionDetailsResponse"></output>
+      <fault message="tns:SessionExpired" name="SessionExpired" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetInstructionDetails/Fault/SessionExpired"></fault>
+      <fault message="tns:PlayerDetailNotSupported" name="PlayerDetailNotSupported" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetInstructionDetails/Fault/PlayerDetailNotSupported"></fault>
+      <fault message="tns:InvalidRequest" name="InvalidRequest" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetInstructionDetails/Fault/InvalidRequest"></fault>
+      <fault message="tns:InternalError" name="InternalError" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetInstructionDetails/Fault/InternalError"></fault>
+      <fault message="tns:InvalidSession" name="InvalidSession" wsam:Action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetInstructionDetails/Fault/InvalidSession"></fault>
+    </operation>
+  </portType>
+  <binding name="G2PGCustomerCallbackAPIPortBinding" type="tns:G2PGCustomerCallbackAPI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="cusGetSession">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="SessionExpired">
+        <soap:fault name="SessionExpired" use="literal"/>
+      </fault>
+      <fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </fault>
+      <fault name="InternalError">
+        <soap:fault name="InternalError" use="literal"/>
+      </fault>
+      <fault name="InvalidSession">
+        <soap:fault name="InvalidSession" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="cusGetBalances">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="InvalidAccountNumber">
+        <soap:fault name="InvalidAccountNumber" use="literal"/>
+      </fault>
+      <fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </fault>
+      <fault name="InternalError">
+        <soap:fault name="InternalError" use="literal"/>
+      </fault>
+      <fault name="InvalidSession">
+        <soap:fault name="InvalidSession" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="cusGetInstructionDetails">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="SessionExpired">
+        <soap:fault name="SessionExpired" use="literal"/>
+      </fault>
+      <fault name="PlayerDetailNotSupported">
+        <soap:fault name="PlayerDetailNotSupported" use="literal"/>
+      </fault>
+      <fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </fault>
+      <fault name="InternalError">
+        <soap:fault name="InternalError" use="literal"/>
+      </fault>
+      <fault name="InvalidSession">
+        <soap:fault name="InvalidSession" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="G2PGCustomerCallbackAPI">
+    <port binding="tns:G2PGCustomerCallbackAPIPortBinding" name="G2PGCustomerCallbackAPIPort">
+      <soap:address location="http://10.17.37.220:8380/onp-adapter-web/G2PGCustomerCallbackAPI"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGCustomerCallbackAPI</con:endpoint></con:endpoints><con:operation id="46906cf3-2e6c-4196-8df2-e33bad8d5342" isOneWay="false" action="" name="cusGetBalances" bindingOperationName="cusGetBalances" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3f5bbd30-c757-4637-b568-4d3517af3e71" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGCustomerCallbackAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:CusGetBalancesRequest>\r
+         <customerIds>\r
+            <accountNumber>?</accountNumber>\r
+            <customerId>?</customerId>\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <sessionToken>?</sessionToken>\r
+      </com:CusGetBalancesRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetBalancesRequest"/></con:call></con:operation><con:operation id="4528a4d6-e3a8-4e1e-a573-1fdb1b87e9b8" isOneWay="false" action="" name="cusGetInstructionDetails" bindingOperationName="cusGetInstructionDetails" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2ae883c1-9361-4da8-b7ca-4ea316cdb857" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGCustomerCallbackAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:CusGetInstructionDetailsRequest>\r
+         <!--1 or more repetitions:-->\r
+         <instructionDataItems>\r
+            <type>?</type>\r
+            <value>?</value>\r
+         </instructionDataItems>\r
+         <sessionToken>?</sessionToken>\r
+      </com:CusGetInstructionDetailsRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetInstructionDetailsRequest"/></con:call></con:operation><con:operation id="5bfecf38-be6a-4a6d-ac9c-bb3b7eb82cfa" isOneWay="false" action="" name="cusGetSession" bindingOperationName="cusGetSession" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c45f0e1b-372b-456a-9081-6378e0032e3b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGCustomerCallbackAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:CusGetSessionRequest>\r
+         <sessionId>?</sessionId>\r
+         <tempSession>?</tempSession>\r
+      </com:CusGetSessionRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/G2PGCustomerCallbackAPI/cusGetSessionRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

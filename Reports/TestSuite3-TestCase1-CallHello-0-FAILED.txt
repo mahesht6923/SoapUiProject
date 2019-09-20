@@ -1,0 +1,10 @@
+Status: FAILED
+Time Taken: 77
+Size: 0
+Timestamp: Thu Sep 19 17:09:27 PDT 2019
+TestStep: CallHello
+Error:java.lang.NullPointerException: Cannot get property 'testCases' on null object
+
+----------------- Messages ------------------------------
+java.lang.NullPointerException: Cannot get property 'testCases' on null object
+error at line: 3

@@ -1,0 +1,1517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="bbf5b8c4-6101-44c1-88f8-e82513e4f42a" activeEnvironment="Default" name="G2PGWalletAPI" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="4ea02c3f-e161-472d-9b16-3afebeeae590" wsaVersion="NONE" name="G2PGWalletAPISoapBinding" type="wsdl" bindingName="{http://com.finsoft.g2pg}G2PGWalletAPISoapBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/c-tangutm/Documents/NewHire/Laura/Resort%20Wallet/Automation%20Tool/SoapUI/wsdl/G2PGWalletAPI.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\c-tangutm\Documents\NewHire\Laura\Resort%20Wallet\Automation%20Tool\SoapUI\wsdl\G2PGWalletAPI.wsdl"><con:part><con:url>file:\C:\Users\c-tangutm\Documents\NewHire\Laura\Resort%20Wallet\Automation%20Tool\SoapUI\wsdl\G2PGWalletAPI.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="G2PGWalletAPI" targetNamespace="http://com.finsoft.g2pg" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://com.finsoft.g2pg" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.finsoft.g2pg" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="GetTxs4BusinessDayRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="businessDayCode" type="xs:string"/>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+              <xs:element minOccurs="0" name="txStateId" nillable="true" type="tns:TxStateEnum"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PaymentGatewayBase">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="GetTxs4BusinessDayResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="transactions" type="tns:ProcessedTransactionData"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="webServiceResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProcessedTransactionData">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="amountCharges" type="xs:decimal"/>
+              <xs:element name="amountCustomer" type="xs:decimal"/>
+              <xs:element name="amountFXCommision" type="xs:decimal"/>
+              <xs:element name="amountTransaction" type="xs:decimal"/>
+              <xs:element name="amountTransactionBC" type="xs:decimal"/>
+              <xs:element name="amountTransactionChannel" type="xs:decimal"/>
+              <xs:element name="currencyId_Channel" type="xs:string"/>
+              <xs:element name="currencyId_Customer" type="xs:string"/>
+              <xs:element minOccurs="0" name="message4Customer" nillable="true" type="xs:string"/>
+              <xs:element name="pgReference" type="xs:string"/>
+              <xs:element name="routeState" type="tns:routeStateEnum"/>
+              <xs:element name="transactionId" type="xs:long"/>
+              <xs:element name="tsOrdered" type="xs:dateTime"/>
+              <xs:element name="txStateDescription" type="xs:string"/>
+              <xs:element name="txStateId" type="tns:TxStateEnum"/>
+              <xs:element name="txTypeId" type="tns:TxTypeEnum"/>
+              <xs:element name="walletReference" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SetupInstructionRequest">
+        <xs:sequence>
+          <xs:element name="customerData" type="tns:CustomerData"/>
+          <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+          <xs:element name="duplicateCheckOnly" type="xs:boolean"/>
+          <xs:element name="hmac" type="xs:string"/>
+          <xs:element name="instructionData" type="tns:InstructionData"/>
+          <xs:element name="systemId" type="xs:string"/>
+          <xs:element name="systemPartnerCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CustomerData">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="accounts" nillable="true" type="tns:AccountData"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="attributes" nillable="true" type="tns:CustomerAttribute"/>
+              <xs:element name="currencyId" type="xs:string"/>
+              <xs:element name="customerId" type="xs:string"/>
+              <xs:element name="displayName" type="xs:string"/>
+              <xs:element name="languageId" type="xs:string"/>
+              <xs:element minOccurs="0" name="systemCustomerSegmentCode" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+              <xs:element name="systemVerificationState" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="username" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AccountData">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="accountNumber" type="xs:string"/>
+              <xs:element name="dateClosed" nillable="true" type="xs:dateTime"/>
+              <xs:element name="systemAccountType" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CustomerAttribute">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="type" type="xs:string"/>
+              <xs:element name="value" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CustomerIDsRecord">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="accountNumber" type="xs:string"/>
+              <xs:element minOccurs="0" name="customerId" type="xs:string"/>
+              <xs:element minOccurs="0" name="systemAccountType" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="InstructionData">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="accountName" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="accountNumber" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="bankBranchCode" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="bankBranchName" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="bankCode" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="bankName" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="bankSwiftCode" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="cardExpiryDate" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="cardIssueNumber" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="cardStartOfValidity" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="city" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="countryId" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="dateofBirth" nillable="true" type="xs:dateTime"/>
+              <xs:element minOccurs="0" name="email" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="encryptedDetails" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="encryptedFieldsList" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="encryptionKeyName" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="extraValue1" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="extraValue2" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="fixedPhone" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string"/>
+              <xs:element name="methodId" type="xs:string"/>
+              <xs:element minOccurs="0" name="mobilePhone" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="postCode" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="state" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="streetAddress" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="uniqueWalletId" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SetupInstructionResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence>
+              <xs:element name="instructionId" type="xs:long"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SetDefaultInstructionRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element name="instructionId" type="xs:long"/>
+              <xs:element default="false" name="setDefaultForDeposit" type="xs:boolean"/>
+              <xs:element default="false" name="setDefaultForWithdrawal" type="xs:boolean"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SetDefaultInstructionResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetInstructionsRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetInstructionsResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="instructions" type="tns:Instruction"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Instruction">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="accountName" type="xs:string"/>
+              <xs:element name="accountNumber" type="xs:string"/>
+              <xs:element minOccurs="0" name="bankBranchCode" type="xs:string"/>
+              <xs:element minOccurs="0" name="bankBranchName" type="xs:string"/>
+              <xs:element minOccurs="0" name="bankCode" type="xs:string"/>
+              <xs:element minOccurs="0" name="bankName" type="xs:string"/>
+              <xs:element minOccurs="0" name="bankSwiftCode" type="xs:string"/>
+              <xs:element name="canBeDefaultForDeposit" type="xs:boolean"/>
+              <xs:element name="canBeDefaultForWithdrawal" type="xs:boolean"/>
+              <xs:element minOccurs="0" name="cardExpiryDate" type="xs:string"/>
+              <xs:element minOccurs="0" name="cardIssueNumber" type="xs:string"/>
+              <xs:element minOccurs="0" name="cardStartOfValidity" type="xs:string"/>
+              <xs:element minOccurs="0" name="channelDescription" type="xs:string"/>
+              <xs:element minOccurs="0" name="channelId" type="xs:string"/>
+              <xs:element minOccurs="0" name="city" type="xs:string"/>
+              <xs:element minOccurs="0" name="countryId" type="xs:string"/>
+              <xs:element minOccurs="0" name="dateofBirth" type="xs:dateTime"/>
+              <xs:element minOccurs="0" name="email" type="xs:string"/>
+              <xs:element minOccurs="0" name="extraValue1" type="xs:string"/>
+              <xs:element minOccurs="0" name="extraValue2" type="xs:string"/>
+              <xs:element name="firstName" type="xs:string"/>
+              <xs:element minOccurs="0" name="fixedPhone" type="xs:string"/>
+              <xs:element minOccurs="0" name="instructionId" type="xs:long"/>
+              <xs:element name="isDefaultForDeposit" type="xs:boolean"/>
+              <xs:element name="isDefaultForWithdrawal" type="xs:boolean"/>
+              <xs:element name="isDepositPossible" type="xs:boolean"/>
+              <xs:element name="isWithdrawalPossible" type="xs:boolean"/>
+              <xs:element name="lastName" type="xs:string"/>
+              <xs:element name="methodClassId" type="xs:string"/>
+              <xs:element name="methodId" type="xs:string"/>
+              <xs:element name="methodName" type="xs:string"/>
+              <xs:element minOccurs="0" name="mobilePhone" type="xs:string"/>
+              <xs:element minOccurs="0" name="notes4Customer" type="xs:string"/>
+              <xs:element minOccurs="0" name="postCode" type="xs:string"/>
+              <xs:element minOccurs="0" name="state" type="xs:string"/>
+              <xs:element minOccurs="0" name="streetAddress" type="xs:string"/>
+              <xs:element minOccurs="0" name="title" type="xs:string"/>
+              <xs:element minOccurs="0" name="triesRemaining" type="xs:long"/>
+              <xs:element name="tsCreated" type="xs:dateTime"/>
+              <xs:element minOccurs="0" name="uniqueWalletId" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="loggableObjectList">
+        <xs:complexContent>
+          <xs:extension base="tns:arrayList">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="arrayList">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractList">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="abstractList">
+        <xs:complexContent>
+          <xs:extension base="tns:abstractCollection">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="abstractCollection">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="BlacklistCustomerRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element name="notes" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BlacklistCustomerResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="IsClosableRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="IsClosableResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence>
+              <xs:element name="isClosable" type="xs:boolean"/>
+              <xs:element minOccurs="0" name="reason" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CancelTxRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element minOccurs="0" name="pgReference" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="requestorReference" nillable="true" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+              <xs:element minOccurs="0" name="walletReference" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CancelTxResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence>
+              <xs:element name="transactionData" type="tns:ProcessedTransactionData"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetInstructions4PortabilityRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetInstructions4PortabilityResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="instructions" type="tns:Instruction"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RefundTxRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element minOccurs="0" name="pgReference" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="requestorReference" nillable="true" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+              <xs:element minOccurs="0" name="walletReference" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RefundTxResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence>
+              <xs:element name="transactionData" type="tns:ProcessedTransactionData"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PseudonimiseCustomerRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element name="notes" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PseudonimiseCustomerResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="OrderTxRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="customerData" nillable="true" type="tns:CustomerData"/>
+              <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+              <xs:element default="false" name="forceTx" nillable="true" type="xs:boolean"/>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element minOccurs="0" name="instructionId" type="xs:long"/>
+              <xs:element name="reasonCode" nillable="true" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+              <xs:element minOccurs="0" name="systemSalesChannel" nillable="true" type="xs:string"/>
+              <xs:element name="transactionData" type="tns:WalletTransactionData"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="WalletTransactionData">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="amountOrdered" type="xs:decimal"/>
+              <xs:element name="currencyId" type="xs:string"/>
+              <xs:element name="ipAddress" nillable="true" type="xs:string"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="optionalParameters" nillable="true" type="tns:OptionalTxParameter"/>
+              <xs:element name="reason" nillable="true" type="xs:string"/>
+              <xs:element name="requestorReference" type="xs:string"/>
+              <xs:element name="sensitiveDataHandle" nillable="true" type="xs:string"/>
+              <xs:element name="txTypeId" type="tns:TxTypeEnum"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="OptionalTxParameter">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="type" type="xs:string"/>
+              <xs:element minOccurs="0" name="value" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="OrderTxResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence>
+              <xs:element name="transactionData" type="tns:ProcessedTransactionData"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetTxStateRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element minOccurs="0" name="pgReference" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="0" name="requestorReference" nillable="true" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+              <xs:element minOccurs="0" name="walletReference" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetTxStateResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence>
+              <xs:element name="transactionData" type="tns:ProcessedTransactionData"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CloneInstructionRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element name="instructionId" type="xs:long"/>
+              <xs:element minOccurs="0" name="methodId" nillable="true" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CloneInstructionResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence>
+              <xs:element name="instructionId" type="xs:long"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SuspendCustomerRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element name="notes" type="xs:string"/>
+              <xs:element name="suspensionCode" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SuspendCustomerResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateCustomerRequest">
+        <xs:complexContent>
+          <xs:extension base="tns:PaymentGatewayBase">
+            <xs:sequence>
+              <xs:element name="customerData" type="tns:CustomerData"/>
+              <xs:element name="hmac" type="xs:string"/>
+              <xs:element name="systemId" type="xs:string"/>
+              <xs:element name="systemPartnerCode" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="UpdateCustomerResponse">
+        <xs:complexContent>
+          <xs:extension base="tns:webServiceResponse">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:simpleType name="TxStateEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="WaitingForCustomersConfirmation"/>
+          <xs:enumeration value="WaitingForWalletsAuthorisation"/>
+          <xs:enumeration value="WaitingForAuthorisation"/>
+          <xs:enumeration value="ReadyToGo"/>
+          <xs:enumeration value="Cancelled"/>
+          <xs:enumeration value="SentToExecution"/>
+          <xs:enumeration value="ExecutedSuccessfully"/>
+          <xs:enumeration value="Failed"/>
+          <xs:enumeration value="InDoubt"/>
+          <xs:enumeration value="ReferralB"/>
+          <xs:enumeration value="ExecutedManually"/>
+          <xs:enumeration value="ReferralConfirmedByTheOperator"/>
+          <xs:enumeration value="ReferralRejectedByTheOperator"/>
+          <xs:enumeration value="FailedAfterInDoubtOrReferral"/>
+          <xs:enumeration value="WaitingForThe2ndAuthorisation"/>
+          <xs:enumeration value="ReadyForRedirection"/>
+          <xs:enumeration value="InRedirection"/>
+          <xs:enumeration value="Verifying"/>
+          <xs:enumeration value="Reversed"/>
+          <xs:enumeration value="FailedAfterTimeout"/>
+          <xs:enumeration value="SuccessfulPending1stCheck"/>
+          <xs:enumeration value="SuccessfulPending2ndCheck"/>
+          <xs:enumeration value="SuccessfulPendingReversal"/>
+          <xs:enumeration value="ThrashedUnallocated"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="routeStateEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Active"/>
+          <xs:enumeration value="Inactive"/>
+          <xs:enumeration value="Blocked"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="TxTypeEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Deposit"/>
+          <xs:enumeration value="Withdrawal"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="InvalidRequest" type="tns:InvalidRequest"/>
+      <xs:complexType name="InvalidRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GeneralError" type="tns:GeneralError"/>
+      <xs:complexType name="GeneralError">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="InvalidData" type="tns:InvalidData"/>
+      <xs:complexType name="InvalidData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TransactionLimitExceeded" type="tns:TransactionLimitExceeded"/>
+      <xs:complexType name="TransactionLimitExceeded">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NotEnoughFunds" type="tns:NotEnoughFunds"/>
+      <xs:complexType name="NotEnoughFunds">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetTxs4BusinessDayRequest" nillable="true" type="tns:GetTxs4BusinessDayRequest"/>
+      <xs:element name="GetTxs4BusinessDayResponse" nillable="true" type="tns:GetTxs4BusinessDayResponse"/>
+      <xs:element name="SetupInstructionRequest" nillable="true" type="tns:SetupInstructionRequest"/>
+      <xs:element name="SetupInstructionResponse" nillable="true" type="tns:SetupInstructionResponse"/>
+      <xs:element name="SetDefaultInstructionRequest" nillable="true" type="tns:SetDefaultInstructionRequest"/>
+      <xs:element name="SetDefaultInstructionResponse" nillable="true" type="tns:SetDefaultInstructionResponse"/>
+      <xs:element name="GetInstructionsRequest" nillable="true" type="tns:GetInstructionsRequest"/>
+      <xs:element name="GetInstructionsResponse" nillable="true" type="tns:GetInstructionsResponse"/>
+      <xs:element name="BlacklistCustomerRequest" nillable="true" type="tns:BlacklistCustomerRequest"/>
+      <xs:element name="BlacklistCustomerResponse" nillable="true" type="tns:BlacklistCustomerResponse"/>
+      <xs:element name="IsClosableRequest" nillable="true" type="tns:IsClosableRequest"/>
+      <xs:element name="IsClosableResponse" nillable="true" type="tns:IsClosableResponse"/>
+      <xs:element name="CancelTxRequest" nillable="true" type="tns:CancelTxRequest"/>
+      <xs:element name="CancelTxResponse" nillable="true" type="tns:CancelTxResponse"/>
+      <xs:element name="GetInstructions4PortabilityRequest" nillable="true" type="tns:GetInstructions4PortabilityRequest"/>
+      <xs:element name="GetInstructions4PortabilityResponse" nillable="true" type="tns:GetInstructions4PortabilityResponse"/>
+      <xs:element name="RefundTxRequest" nillable="true" type="tns:RefundTxRequest"/>
+      <xs:element name="RefundTxResponse" nillable="true" type="tns:RefundTxResponse"/>
+      <xs:element name="PseudonimiseCustomerRequest" nillable="true" type="tns:PseudonimiseCustomerRequest"/>
+      <xs:element name="PseudonimiseCustomerResponse" nillable="true" type="tns:PseudonimiseCustomerResponse"/>
+      <xs:element name="OrderTxRequest" nillable="true" type="tns:OrderTxRequest"/>
+      <xs:element name="OrderTxResponse" nillable="true" type="tns:OrderTxResponse"/>
+      <xs:element name="GetTxStateRequest" nillable="true" type="tns:GetTxStateRequest"/>
+      <xs:element name="GetTxStateResponse" nillable="true" type="tns:GetTxStateResponse"/>
+      <xs:element name="CloneInstructionRequest" nillable="true" type="tns:CloneInstructionRequest"/>
+      <xs:element name="CloneInstructionResponse" nillable="true" type="tns:CloneInstructionResponse"/>
+      <xs:element name="SuspendCustomerRequest" nillable="true" type="tns:SuspendCustomerRequest"/>
+      <xs:element name="SuspendCustomerResponse" nillable="true" type="tns:SuspendCustomerResponse"/>
+      <xs:element name="UpdateCustomerRequest" nillable="true" type="tns:UpdateCustomerRequest"/>
+      <xs:element name="UpdateCustomerResponse" nillable="true" type="tns:UpdateCustomerResponse"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getTxs4BusinessDay">
+    <wsdl:part element="tns:GetTxs4BusinessDayRequest" name="GetTxs4BusinessDayRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isClosableResponse">
+    <wsdl:part element="tns:IsClosableResponse" name="IsClosableResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setupInstruction">
+    <wsdl:part element="tns:SetupInstructionRequest" name="SetupInstructionRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDefaultInstruction">
+    <wsdl:part element="tns:SetDefaultInstructionRequest" name="SetDefaultInstructionRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cloneInstructionResponse">
+    <wsdl:part element="tns:CloneInstructionResponse" name="CloneInstructionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInstructions">
+    <wsdl:part element="tns:GetInstructionsRequest" name="GetInstructionsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="suspendCustomerResponse">
+    <wsdl:part element="tns:SuspendCustomerResponse" name="SuspendCustomerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInstructionsResponse">
+    <wsdl:part element="tns:GetInstructionsResponse" name="GetInstructionsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refundTxResponse">
+    <wsdl:part element="tns:RefundTxResponse" name="RefundTxResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="orderTxResponse">
+    <wsdl:part element="tns:OrderTxResponse" name="OrderTxResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refundTx">
+    <wsdl:part element="tns:RefundTxRequest" name="RefundTxRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInstructions4portabilityResponse">
+    <wsdl:part element="tns:GetInstructions4PortabilityResponse" name="GetInstructions4PortabilityResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NotEnoughFunds">
+    <wsdl:part element="tns:NotEnoughFunds" name="NotEnoughFunds"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="blacklistCustomerResponse">
+    <wsdl:part element="tns:BlacklistCustomerResponse" name="BlacklistCustomerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTxState">
+    <wsdl:part element="tns:GetTxStateRequest" name="GetTxStateRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cloneInstruction">
+    <wsdl:part element="tns:CloneInstructionRequest" name="CloneInstructionRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidRequest">
+    <wsdl:part element="tns:InvalidRequest" name="InvalidRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="TransactionLimitExceeded">
+    <wsdl:part element="tns:TransactionLimitExceeded" name="TransactionLimitExceeded"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTxStateResponse">
+    <wsdl:part element="tns:GetTxStateResponse" name="GetTxStateResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="blacklistCustomer">
+    <wsdl:part element="tns:BlacklistCustomerRequest" name="BlacklistCustomerRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelTxResponse">
+    <wsdl:part element="tns:CancelTxResponse" name="CancelTxResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTxs4BusinessDayResponse">
+    <wsdl:part element="tns:GetTxs4BusinessDayResponse" name="GetTxs4BusinessDayResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setupInstructionResponse">
+    <wsdl:part element="tns:SetupInstructionResponse" name="SetupInstructionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isClosable">
+    <wsdl:part element="tns:IsClosableRequest" name="IsClosableRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelTx">
+    <wsdl:part element="tns:CancelTxRequest" name="CancelTxRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getInstructions4portability">
+    <wsdl:part element="tns:GetInstructions4PortabilityRequest" name="GetInstructions4PortabilityRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidData">
+    <wsdl:part element="tns:InvalidData" name="InvalidData"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pseudonimiseCustomerResponse">
+    <wsdl:part element="tns:PseudonimiseCustomerResponse" name="PseudonimiseCustomerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pseudonimiseCustomer">
+    <wsdl:part element="tns:PseudonimiseCustomerRequest" name="PseudonimiseCustomerRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="orderTx">
+    <wsdl:part element="tns:OrderTxRequest" name="OrderTxRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GeneralError">
+    <wsdl:part element="tns:GeneralError" name="GeneralError"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDefaultInstructionResponse">
+    <wsdl:part element="tns:SetDefaultInstructionResponse" name="SetDefaultInstructionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="suspendCustomer">
+    <wsdl:part element="tns:SuspendCustomerRequest" name="SuspendCustomerRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCustomer">
+    <wsdl:part element="tns:UpdateCustomerRequest" name="UpdateCustomerRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCustomerResponse">
+    <wsdl:part element="tns:UpdateCustomerResponse" name="UpdateCustomerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WalletAPIWebService">
+    <wsdl:operation name="getTxs4BusinessDay">
+      <wsdl:input message="tns:getTxs4BusinessDay" name="getTxs4BusinessDay"></wsdl:input>
+      <wsdl:output message="tns:getTxs4BusinessDayResponse" name="getTxs4BusinessDayResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setupInstruction">
+      <wsdl:input message="tns:setupInstruction" name="setupInstruction"></wsdl:input>
+      <wsdl:output message="tns:setupInstructionResponse" name="setupInstructionResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidData" name="InvalidData"></wsdl:fault>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setDefaultInstruction">
+      <wsdl:input message="tns:setDefaultInstruction" name="setDefaultInstruction"></wsdl:input>
+      <wsdl:output message="tns:setDefaultInstructionResponse" name="setDefaultInstructionResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidData" name="InvalidData"></wsdl:fault>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getInstructions">
+      <wsdl:input message="tns:getInstructions" name="getInstructions"></wsdl:input>
+      <wsdl:output message="tns:getInstructionsResponse" name="getInstructionsResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidData" name="InvalidData"></wsdl:fault>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="blacklistCustomer">
+      <wsdl:input message="tns:blacklistCustomer" name="blacklistCustomer"></wsdl:input>
+      <wsdl:output message="tns:blacklistCustomerResponse" name="blacklistCustomerResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidData" name="InvalidData"></wsdl:fault>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isClosable">
+      <wsdl:input message="tns:isClosable" name="isClosable"></wsdl:input>
+      <wsdl:output message="tns:isClosableResponse" name="isClosableResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidData" name="InvalidData"></wsdl:fault>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelTx">
+      <wsdl:input message="tns:cancelTx" name="cancelTx"></wsdl:input>
+      <wsdl:output message="tns:cancelTxResponse" name="cancelTxResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getInstructions4portability">
+      <wsdl:input message="tns:getInstructions4portability" name="getInstructions4portability"></wsdl:input>
+      <wsdl:output message="tns:getInstructions4portabilityResponse" name="getInstructions4portabilityResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidData" name="InvalidData"></wsdl:fault>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="refundTx">
+      <wsdl:input message="tns:refundTx" name="refundTx"></wsdl:input>
+      <wsdl:output message="tns:refundTxResponse" name="refundTxResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pseudonimiseCustomer">
+      <wsdl:input message="tns:pseudonimiseCustomer" name="pseudonimiseCustomer"></wsdl:input>
+      <wsdl:output message="tns:pseudonimiseCustomerResponse" name="pseudonimiseCustomerResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidData" name="InvalidData"></wsdl:fault>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="orderTx">
+      <wsdl:input message="tns:orderTx" name="orderTx"></wsdl:input>
+      <wsdl:output message="tns:orderTxResponse" name="orderTxResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidData" name="InvalidData"></wsdl:fault>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:TransactionLimitExceeded" name="TransactionLimitExceeded"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+      <wsdl:fault message="tns:NotEnoughFunds" name="NotEnoughFunds"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTxState">
+      <wsdl:input message="tns:getTxState" name="getTxState"></wsdl:input>
+      <wsdl:output message="tns:getTxStateResponse" name="getTxStateResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cloneInstruction">
+      <wsdl:input message="tns:cloneInstruction" name="cloneInstruction"></wsdl:input>
+      <wsdl:output message="tns:cloneInstructionResponse" name="cloneInstructionResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidData" name="InvalidData"></wsdl:fault>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="suspendCustomer">
+      <wsdl:input message="tns:suspendCustomer" name="suspendCustomer"></wsdl:input>
+      <wsdl:output message="tns:suspendCustomerResponse" name="suspendCustomerResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidData" name="InvalidData"></wsdl:fault>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateCustomer">
+      <wsdl:input message="tns:updateCustomer" name="updateCustomer"></wsdl:input>
+      <wsdl:output message="tns:updateCustomerResponse" name="updateCustomerResponse"></wsdl:output>
+      <wsdl:fault message="tns:InvalidData" name="InvalidData"></wsdl:fault>
+      <wsdl:fault message="tns:InvalidRequest" name="InvalidRequest"></wsdl:fault>
+      <wsdl:fault message="tns:GeneralError" name="GeneralError"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="G2PGWalletAPISoapBinding" type="tns:WalletAPIWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getTxs4BusinessDay">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTxs4BusinessDay">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTxs4BusinessDayResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setupInstruction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="setupInstruction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setupInstructionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidData">
+        <soap:fault name="InvalidData" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setDefaultInstruction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="setDefaultInstruction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setDefaultInstructionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidData">
+        <soap:fault name="InvalidData" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getInstructions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getInstructions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInstructionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidData">
+        <soap:fault name="InvalidData" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="blacklistCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="blacklistCustomer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="blacklistCustomerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidData">
+        <soap:fault name="InvalidData" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isClosable">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isClosable">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isClosableResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidData">
+        <soap:fault name="InvalidData" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelTx">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cancelTx">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelTxResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getInstructions4portability">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getInstructions4portability">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInstructions4portabilityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidData">
+        <soap:fault name="InvalidData" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="refundTx">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="refundTx">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="refundTxResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pseudonimiseCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pseudonimiseCustomer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pseudonimiseCustomerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidData">
+        <soap:fault name="InvalidData" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="orderTx">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="orderTx">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="orderTxResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidData">
+        <soap:fault name="InvalidData" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="TransactionLimitExceeded">
+        <soap:fault name="TransactionLimitExceeded" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotEnoughFunds">
+        <soap:fault name="NotEnoughFunds" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTxState">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getTxState">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTxStateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cloneInstruction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cloneInstruction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cloneInstructionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidData">
+        <soap:fault name="InvalidData" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="suspendCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="suspendCustomer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="suspendCustomerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidData">
+        <soap:fault name="InvalidData" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateCustomer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateCustomerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidData">
+        <soap:fault name="InvalidData" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="GeneralError">
+        <soap:fault name="GeneralError" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="G2PGWalletAPI">
+    <wsdl:port binding="tns:G2PGWalletAPISoapBinding" name="WalletAPIWebServicePort">
+      <soap:address location="http://onepayserver:8188/PaymentGateway/G2PGWalletAPI"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint></con:endpoints><con:operation id="fe70fac9-860f-46df-b127-54ec6ec48386" isOneWay="false" action="" name="blacklistCustomer" bindingOperationName="blacklistCustomer" type="Request-Response" outputName="blacklistCustomerResponse" inputName="blacklistCustomer" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7907e75a-df69-4230-bfb9-4bca53aa6ce5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:BlacklistCustomerRequest>\r
+         <customerIds>\r
+            <!--Optional:-->\r
+            <accountNumber>?</accountNumber>\r
+            <!--Optional:-->\r
+            <customerId>?</customerId>\r
+            <!--Optional:-->\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <hmac>?</hmac>\r
+         <notes>?</notes>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:BlacklistCustomerRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/blacklistCustomer"/></con:call></con:operation><con:operation id="ad30cb31-c753-4ce4-8cdd-23dcb44d9a9f" isOneWay="false" action="" name="cancelTx" bindingOperationName="cancelTx" type="Request-Response" outputName="cancelTxResponse" inputName="cancelTx" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9e08c324-37d0-4826-b937-d4cf584bbc2e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:CancelTxRequest>\r
+         <hmac>?</hmac>\r
+         <!--Optional:-->\r
+         <pgReference>?</pgReference>\r
+         <!--Optional:-->\r
+         <requestorReference>?</requestorReference>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+         <!--Optional:-->\r
+         <walletReference>?</walletReference>\r
+      </com:CancelTxRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/cancelTx"/></con:call></con:operation><con:operation id="27f41787-3f47-4917-a4f1-7a489d403efa" isOneWay="false" action="" name="cloneInstruction" bindingOperationName="cloneInstruction" type="Request-Response" outputName="cloneInstructionResponse" inputName="cloneInstruction" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8f2ad02f-ffd3-479f-b063-c796a0c07b74" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:CloneInstructionRequest>\r
+         <hmac>?</hmac>\r
+         <instructionId>?</instructionId>\r
+         <!--Optional:-->\r
+         <methodId>?</methodId>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:CloneInstructionRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/cloneInstruction"/></con:call></con:operation><con:operation id="68dc0667-7678-4098-98fb-6afd3250b904" isOneWay="false" action="" name="getInstructions" bindingOperationName="getInstructions" type="Request-Response" outputName="getInstructionsResponse" inputName="getInstructions" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dc9a81c1-ee5e-4246-b286-0529878ad807" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:GetInstructionsRequest>\r
+         <customerIds>\r
+            <!--Optional:-->\r
+            <accountNumber>?</accountNumber>\r
+            <!--Optional:-->\r
+            <customerId>?</customerId>\r
+            <!--Optional:-->\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <hmac>?</hmac>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:GetInstructionsRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/getInstructions"/></con:call></con:operation><con:operation id="bdcf31c5-1c73-4cf6-80aa-5559994f5136" isOneWay="false" action="" name="getInstructions4portability" bindingOperationName="getInstructions4portability" type="Request-Response" outputName="getInstructions4portabilityResponse" inputName="getInstructions4portability" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="181328e8-934f-448a-93e6-acce6fde1fe4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:GetInstructions4PortabilityRequest>\r
+         <customerIds>\r
+            <!--Optional:-->\r
+            <accountNumber>?</accountNumber>\r
+            <!--Optional:-->\r
+            <customerId>?</customerId>\r
+            <!--Optional:-->\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <hmac>?</hmac>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:GetInstructions4PortabilityRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/getInstructions4portability"/></con:call></con:operation><con:operation id="e1f85aed-dcad-49e4-ac28-013981857b37" isOneWay="false" action="" name="getTxs4BusinessDay" bindingOperationName="getTxs4BusinessDay" type="Request-Response" outputName="getTxs4BusinessDayResponse" inputName="getTxs4BusinessDay" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="16adb099-6339-425c-89ce-d021c1b22f34" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:GetTxs4BusinessDayRequest>\r
+         <businessDayCode>?</businessDayCode>\r
+         <hmac>?</hmac>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+         <!--Optional:-->\r
+         <txStateId>?</txStateId>\r
+      </com:GetTxs4BusinessDayRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/getTxs4BusinessDay"/></con:call></con:operation><con:operation id="c03b44fa-ad7c-43ef-b65b-b1c5a4387976" isOneWay="false" action="" name="getTxState" bindingOperationName="getTxState" type="Request-Response" outputName="getTxStateResponse" inputName="getTxState" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="122fb137-ab36-4773-a188-d7b8d891db7a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:GetTxStateRequest>\r
+         <hmac>?</hmac>\r
+         <!--Optional:-->\r
+         <pgReference>?</pgReference>\r
+         <!--Optional:-->\r
+         <requestorReference>?</requestorReference>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+         <!--Optional:-->\r
+         <walletReference>?</walletReference>\r
+      </com:GetTxStateRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/getTxState"/></con:call></con:operation><con:operation id="3876d47f-22ac-4e48-bb7d-cf088416f885" isOneWay="false" action="" name="isClosable" bindingOperationName="isClosable" type="Request-Response" outputName="isClosableResponse" inputName="isClosable" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e244a00f-b15f-4b02-b4fa-38293ae597be" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:IsClosableRequest>\r
+         <customerIds>\r
+            <!--Optional:-->\r
+            <accountNumber>?</accountNumber>\r
+            <!--Optional:-->\r
+            <customerId>?</customerId>\r
+            <!--Optional:-->\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <hmac>?</hmac>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:IsClosableRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/isClosable"/></con:call></con:operation><con:operation id="f18aa37f-a36e-4651-a1df-af389599e3e4" isOneWay="false" action="" name="orderTx" bindingOperationName="orderTx" type="Request-Response" outputName="orderTxResponse" inputName="orderTx" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5f66bc24-e5c8-4978-a902-319af18c0671" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:OrderTxRequest>\r
+         <!--Optional:-->\r
+         <customerData>\r
+            <!--1 or more repetitions:-->\r
+            <accounts>\r
+               <accountNumber>?</accountNumber>\r
+               <dateClosed>?</dateClosed>\r
+               <systemAccountType>?</systemAccountType>\r
+            </accounts>\r
+            <!--Zero or more repetitions:-->\r
+            <attributes>\r
+               <type>?</type>\r
+               <value>?</value>\r
+            </attributes>\r
+            <currencyId>?</currencyId>\r
+            <customerId>?</customerId>\r
+            <displayName>?</displayName>\r
+            <languageId>?</languageId>\r
+            <!--Optional:-->\r
+            <systemCustomerSegmentCode>?</systemCustomerSegmentCode>\r
+            <systemPartnerCode>?</systemPartnerCode>\r
+            <systemVerificationState>?</systemVerificationState>\r
+            <!--Optional:-->\r
+            <username>?</username>\r
+         </customerData>\r
+         <customerIds>\r
+            <!--Optional:-->\r
+            <accountNumber>?</accountNumber>\r
+            <!--Optional:-->\r
+            <customerId>?</customerId>\r
+            <!--Optional:-->\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <forceTx>false</forceTx>\r
+         <hmac>?</hmac>\r
+         <!--Optional:-->\r
+         <instructionId>?</instructionId>\r
+         <reasonCode>?</reasonCode>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+         <!--Optional:-->\r
+         <systemSalesChannel>?</systemSalesChannel>\r
+         <transactionData>\r
+            <amountOrdered>?</amountOrdered>\r
+            <currencyId>?</currencyId>\r
+            <ipAddress>?</ipAddress>\r
+            <!--Zero or more repetitions:-->\r
+            <optionalParameters>\r
+               <!--Optional:-->\r
+               <type>?</type>\r
+               <!--Optional:-->\r
+               <value>?</value>\r
+            </optionalParameters>\r
+            <reason>?</reason>\r
+            <requestorReference>?</requestorReference>\r
+            <sensitiveDataHandle>?</sensitiveDataHandle>\r
+            <txTypeId>?</txTypeId>\r
+         </transactionData>\r
+      </com:OrderTxRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/orderTx"/></con:call></con:operation><con:operation id="3a0b6804-33e4-4f18-b3e6-da26d8293dbd" isOneWay="false" action="" name="pseudonimiseCustomer" bindingOperationName="pseudonimiseCustomer" type="Request-Response" outputName="pseudonimiseCustomerResponse" inputName="pseudonimiseCustomer" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="78fd60b4-9961-4721-a944-70a56877c0de" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:PseudonimiseCustomerRequest>\r
+         <customerIds>\r
+            <!--Optional:-->\r
+            <accountNumber>?</accountNumber>\r
+            <!--Optional:-->\r
+            <customerId>?</customerId>\r
+            <!--Optional:-->\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <hmac>?</hmac>\r
+         <notes>?</notes>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:PseudonimiseCustomerRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/pseudonimiseCustomer"/></con:call></con:operation><con:operation id="633df632-aba6-4748-b395-ba7eaaa02a1c" isOneWay="false" action="" name="refundTx" bindingOperationName="refundTx" type="Request-Response" outputName="refundTxResponse" inputName="refundTx" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3139e46b-03d2-4199-9a05-c788752670c8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:RefundTxRequest>\r
+         <hmac>?</hmac>\r
+         <!--Optional:-->\r
+         <pgReference>?</pgReference>\r
+         <!--Optional:-->\r
+         <requestorReference>?</requestorReference>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+         <!--Optional:-->\r
+         <walletReference>?</walletReference>\r
+      </com:RefundTxRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/refundTx"/></con:call></con:operation><con:operation id="957f71bb-d5d9-42b9-ba79-9eefca983bd5" isOneWay="false" action="" name="setDefaultInstruction" bindingOperationName="setDefaultInstruction" type="Request-Response" outputName="setDefaultInstructionResponse" inputName="setDefaultInstruction" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b1a9b92f-d054-4dd4-93ae-55d0839338c1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:SetDefaultInstructionRequest>\r
+         <hmac>?</hmac>\r
+         <instructionId>?</instructionId>\r
+         <setDefaultForDeposit>false</setDefaultForDeposit>\r
+         <setDefaultForWithdrawal>false</setDefaultForWithdrawal>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:SetDefaultInstructionRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/setDefaultInstruction"/></con:call></con:operation><con:operation id="4df077d1-5daa-4f6f-8887-1cc3226a7201" isOneWay="false" action="" name="setupInstruction" bindingOperationName="setupInstruction" type="Request-Response" outputName="setupInstructionResponse" inputName="setupInstruction" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cc2ec606-038e-4415-a8e7-99eac5cccf0f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:SetupInstructionRequest>\r
+         <customerData>\r
+            <!--1 or more repetitions:-->\r
+            <accounts>\r
+               <accountNumber>?</accountNumber>\r
+               <dateClosed>?</dateClosed>\r
+               <systemAccountType>?</systemAccountType>\r
+            </accounts>\r
+            <!--Zero or more repetitions:-->\r
+            <attributes>\r
+               <type>?</type>\r
+               <value>?</value>\r
+            </attributes>\r
+            <currencyId>?</currencyId>\r
+            <customerId>?</customerId>\r
+            <displayName>?</displayName>\r
+            <languageId>?</languageId>\r
+            <!--Optional:-->\r
+            <systemCustomerSegmentCode>?</systemCustomerSegmentCode>\r
+            <systemPartnerCode>?</systemPartnerCode>\r
+            <systemVerificationState>?</systemVerificationState>\r
+            <!--Optional:-->\r
+            <username>?</username>\r
+         </customerData>\r
+         <customerIds>\r
+            <!--Optional:-->\r
+            <accountNumber>?</accountNumber>\r
+            <!--Optional:-->\r
+            <customerId>?</customerId>\r
+            <!--Optional:-->\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <duplicateCheckOnly>?</duplicateCheckOnly>\r
+         <hmac>?</hmac>\r
+         <instructionData>\r
+            <!--Optional:-->\r
+            <accountName>?</accountName>\r
+            <!--Optional:-->\r
+            <accountNumber>?</accountNumber>\r
+            <!--Optional:-->\r
+            <bankBranchCode>?</bankBranchCode>\r
+            <!--Optional:-->\r
+            <bankBranchName>?</bankBranchName>\r
+            <!--Optional:-->\r
+            <bankCode>?</bankCode>\r
+            <!--Optional:-->\r
+            <bankName>?</bankName>\r
+            <!--Optional:-->\r
+            <bankSwiftCode>?</bankSwiftCode>\r
+            <!--Optional:-->\r
+            <cardExpiryDate>?</cardExpiryDate>\r
+            <!--Optional:-->\r
+            <cardIssueNumber>?</cardIssueNumber>\r
+            <!--Optional:-->\r
+            <cardStartOfValidity>?</cardStartOfValidity>\r
+            <!--Optional:-->\r
+            <city>?</city>\r
+            <!--Optional:-->\r
+            <countryId>?</countryId>\r
+            <!--Optional:-->\r
+            <dateofBirth>?</dateofBirth>\r
+            <!--Optional:-->\r
+            <email>?</email>\r
+            <!--Optional:-->\r
+            <encryptedDetails>?</encryptedDetails>\r
+            <!--Optional:-->\r
+            <encryptedFieldsList>?</encryptedFieldsList>\r
+            <!--Optional:-->\r
+            <encryptionKeyName>?</encryptionKeyName>\r
+            <!--Optional:-->\r
+            <extraValue1>?</extraValue1>\r
+            <!--Optional:-->\r
+            <extraValue2>?</extraValue2>\r
+            <!--Optional:-->\r
+            <firstName>?</firstName>\r
+            <!--Optional:-->\r
+            <fixedPhone>?</fixedPhone>\r
+            <!--Optional:-->\r
+            <lastName>?</lastName>\r
+            <methodId>?</methodId>\r
+            <!--Optional:-->\r
+            <mobilePhone>?</mobilePhone>\r
+            <!--Optional:-->\r
+            <postCode>?</postCode>\r
+            <!--Optional:-->\r
+            <state>?</state>\r
+            <!--Optional:-->\r
+            <streetAddress>?</streetAddress>\r
+            <!--Optional:-->\r
+            <title>?</title>\r
+            <!--Optional:-->\r
+            <uniqueWalletId>?</uniqueWalletId>\r
+         </instructionData>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:SetupInstructionRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/setupInstruction"/></con:call></con:operation><con:operation id="c6ddd644-bd91-4307-8e1f-89f4ba23b6b7" isOneWay="false" action="" name="suspendCustomer" bindingOperationName="suspendCustomer" type="Request-Response" outputName="suspendCustomerResponse" inputName="suspendCustomer" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="03d0b57f-c67e-4e40-97d6-5e0922ced347" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:SuspendCustomerRequest>\r
+         <customerIds>\r
+            <!--Optional:-->\r
+            <accountNumber>?</accountNumber>\r
+            <!--Optional:-->\r
+            <customerId>?</customerId>\r
+            <!--Optional:-->\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <hmac>?</hmac>\r
+         <notes>?</notes>\r
+         <suspensionCode>?</suspensionCode>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:SuspendCustomerRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/suspendCustomer"/></con:call></con:operation><con:operation id="2f1f080e-31e6-4e0e-8799-e4ea5d7a89de" isOneWay="false" action="" name="updateCustomer" bindingOperationName="updateCustomer" type="Request-Response" outputName="updateCustomerResponse" inputName="updateCustomer" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="040e4186-9885-4077-b16b-21416c766273" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://onepayserver:8188/PaymentGateway/G2PGWalletAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:UpdateCustomerRequest>\r
+         <customerData>\r
+            <!--1 or more repetitions:-->\r
+            <accounts>\r
+               <accountNumber>?</accountNumber>\r
+               <dateClosed>?</dateClosed>\r
+               <systemAccountType>?</systemAccountType>\r
+            </accounts>\r
+            <!--Zero or more repetitions:-->\r
+            <attributes>\r
+               <type>?</type>\r
+               <value>?</value>\r
+            </attributes>\r
+            <currencyId>?</currencyId>\r
+            <customerId>?</customerId>\r
+            <displayName>?</displayName>\r
+            <languageId>?</languageId>\r
+            <!--Optional:-->\r
+            <systemCustomerSegmentCode>?</systemCustomerSegmentCode>\r
+            <systemPartnerCode>?</systemPartnerCode>\r
+            <systemVerificationState>?</systemVerificationState>\r
+            <!--Optional:-->\r
+            <username>?</username>\r
+         </customerData>\r
+         <hmac>?</hmac>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:UpdateCustomerRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/WalletAPIWebService/updateCustomer"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

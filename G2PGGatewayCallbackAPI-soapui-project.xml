@@ -1,0 +1,1238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="7920138b-e279-4545-8111-d26881e08fc9" activeEnvironment="Default" name="G2PGGatewayCallbackAPI" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="569b73c0-ad5b-4581-bb91-d163d3a822d9" wsaVersion="NONE" name="G2PGGatewayCallbackAPIPortBinding" type="wsdl" bindingName="{http://com.finsoft.g2pg}G2PGGatewayCallbackAPIPortBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/c-tangutm/Documents/NewHire/Laura/Resort%20Wallet/Automation%20Tool/SoapUI/wsdl/G2PGGatewayCallbackAPI.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\c-tangutm\Documents\NewHire\Laura\Resort%20Wallet\Automation%20Tool\SoapUI\wsdl\G2PGGatewayCallbackAPI.wsdl"><con:part><con:url>file:\C:\Users\c-tangutm\Documents\NewHire\Laura\Resort%20Wallet\Automation%20Tool\SoapUI\wsdl\G2PGGatewayCallbackAPI.wsdl</con:url><con:content><![CDATA[<definitions name="G2PGGatewayCallbackAPI" targetNamespace="http://com.finsoft.g2pg" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://com.finsoft.g2pg" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema targetNamespace="http://com.finsoft.g2pg" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="AccountClosed" type="tns:AccountClosed"/>
+      <xs:element name="AccountLocked" type="tns:AccountLocked"/>
+      <xs:element name="AccountSuspended" type="tns:AccountSuspended"/>
+      <xs:element name="InternalError" type="tns:InternalError"/>
+      <xs:element name="InvalidAccountNumber" type="tns:InvalidAccountNumber"/>
+      <xs:element name="InvalidAccountType" type="tns:InvalidAccountType"/>
+      <xs:element name="InvalidCustomerId" type="tns:InvalidCustomerId"/>
+      <xs:element name="InvalidRequest" type="tns:InvalidRequest"/>
+      <xs:element name="InvalidSession" type="tns:InvalidSession"/>
+      <xs:element name="LimitExceeded" type="tns:LimitExceeded"/>
+      <xs:element name="NotEnoughFunds" type="tns:NotEnoughFunds"/>
+      <xs:element name="PgAuthoriseTxRequest" nillable="true" type="tns:PgAuthoriseTxRequest"/>
+      <xs:element name="PgAuthoriseTxResponse" nillable="true" type="tns:PgAuthoriseTxResponse"/>
+      <xs:element name="PgGetBalancesRequest" nillable="true" type="tns:PgGetBalancesRequest"/>
+      <xs:element name="PgGetBalancesResponse" nillable="true" type="tns:PgGetBalancesResponse"/>
+      <xs:element name="PgGetCustomerIdentityRequest" nillable="true" type="tns:PgGetCustomerIdentityRequest"/>
+      <xs:element name="PgGetCustomerIdentityResponse" nillable="true" type="tns:PgGetCustomerIdentityResponse"/>
+      <xs:element name="PgGetInstructionDetailsRequest" nillable="true" type="tns:PgGetInstructionDetailsRequest"/>
+      <xs:element name="PgGetInstructionDetailsResponse" nillable="true" type="tns:PgGetInstructionDetailsResponse"/>
+      <xs:element name="PgGetTxs4BusinessDayRequest" nillable="true" type="tns:PgGetTxs4BusinessDayRequest"/>
+      <xs:element name="PgGetTxs4BusinessDayResponse" nillable="true" type="tns:PgGetTxs4BusinessDayResponse"/>
+      <xs:element name="PgSendNotificationRequest" nillable="true" type="tns:PgSendNotificationRequest"/>
+      <xs:element name="PgSendNotificationResponse" nillable="true" type="tns:PgSendNotificationResponse"/>
+      <xs:element name="PgSendOperatorAlertRequest" nillable="true" type="tns:PgSendOperatorAlertRequest"/>
+      <xs:element name="PgSendOperatorAlertResponse" nillable="true" type="tns:PgSendOperatorAlertResponse"/>
+      <xs:element name="PgSetupInstructionRequest" nillable="true" type="tns:PgSetupInstructionRequest"/>
+      <xs:element name="PgSetupInstructionResponse" nillable="true" type="tns:PgSetupInstructionResponse"/>
+      <xs:element name="PgUpdateTxRequest" nillable="true" type="tns:PgUpdateTxRequest"/>
+      <xs:element name="PgUpdateTxResponse" nillable="true" type="tns:PgUpdateTxResponse"/>
+      <xs:element name="PlayerDetailNotSupported" type="tns:PlayerDetailNotSupported"/>
+      <xs:element name="SessionExpired" type="tns:SessionExpired"/>
+      <xs:complexType name="PgGetCustomerIdentityRequest">
+        <xs:sequence>
+          <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+          <xs:element name="extOperator" type="xs:string"/>
+          <xs:element name="hmac" type="xs:string"/>
+          <xs:element name="systemId" type="xs:string"/>
+          <xs:element name="systemPartnerCode" type="xs:string"/>
+          <xs:element name="tsRequested" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CustomerIDsRecord">
+        <xs:sequence>
+          <xs:element name="accountNumber" type="xs:string"/>
+          <xs:element name="customerId" type="xs:string"/>
+          <xs:element name="systemAccountType" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgGetCustomerIdentityResponse">
+        <xs:sequence>
+          <xs:element name="customerData" type="tns:CustomerData"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CustomerData">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="accounts" type="tns:AccountData"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="attributes" type="tns:CustomerAttribute"/>
+          <xs:element name="currencyId" type="xs:string"/>
+          <xs:element name="customerId" type="xs:string"/>
+          <xs:element name="displayName" type="xs:string"/>
+          <xs:element name="languageId" type="xs:string"/>
+          <xs:element name="systemCustomerSegmentCode" type="xs:string"/>
+          <xs:element name="systemPartnerCode" type="xs:string"/>
+          <xs:element name="systemVerificationState" nillable="true" type="xs:string"/>
+          <xs:element name="username" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AccountData">
+        <xs:sequence>
+          <xs:element name="accountNumber" type="xs:string"/>
+          <xs:element name="dateClosed" nillable="true" type="xs:dateTime"/>
+          <xs:element name="systemAccountType" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CustomerAttribute">
+        <xs:sequence>
+          <xs:element name="type" type="xs:string"/>
+          <xs:element name="value" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InvalidSession">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InternalError">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InvalidRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InvalidCustomerId">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgSendNotificationRequest">
+        <xs:sequence>
+          <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+          <xs:element name="hmac" type="xs:string"/>
+          <xs:element name="notificationId" type="xs:long"/>
+          <xs:element name="notificationTypeId" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" name="parameters" type="tns:MessageParameter"/>
+          <xs:element name="systemId" type="xs:string"/>
+          <xs:element name="systemPartnerCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MessageParameter">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgSendNotificationResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="acceptanceMessage" type="xs:string"/>
+          <xs:element name="accepted" type="xs:boolean"/>
+          <xs:element name="walletReference" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AccountClosed">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AccountLocked">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AccountSuspended">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InvalidAccountNumber">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InvalidAccountType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgGetInstructionDetailsRequest">
+        <xs:sequence>
+          <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+          <xs:element name="extOperator" type="xs:string"/>
+          <xs:element name="hmac" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" name="instructionDataItems" type="tns:InstructionDataItem"/>
+          <xs:element name="systemId" type="xs:string"/>
+          <xs:element name="systemPartnerCode" type="xs:string"/>
+          <xs:element name="tsRequested" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InstructionDataItem">
+        <xs:sequence>
+          <xs:element name="type" type="tns:InstructionDataItemType"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgGetInstructionDetailsResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="instructionDataItems" type="tns:InstructionDataItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SessionExpired">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PlayerDetailNotSupported">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgAuthoriseTxRequest">
+        <xs:sequence>
+          <xs:element name="balanceOverrideRequested" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="cusSessionToken" type="xs:string"/>
+          <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+          <xs:element name="hmac" type="xs:string"/>
+          <xs:element name="instructionId" nillable="true" type="xs:long"/>
+          <xs:element name="limitOverrideRequested" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="opSessionToken" type="xs:string"/>
+          <xs:element name="password" nillable="true" type="xs:string"/>
+          <xs:element name="systemId" type="xs:string"/>
+          <xs:element name="systemPartnerCode" type="xs:string"/>
+          <xs:element name="transactionData" type="tns:TransactionData"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TransactionData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amountCharges" type="xs:decimal"/>
+          <xs:element name="amountCustomer" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="amountFXCommision" type="xs:decimal"/>
+          <xs:element name="amountTransaction" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="amountTransactionBC" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="amountTransactionChannel" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="channelDescription" nillable="true" type="xs:string"/>
+          <xs:element name="channelId" type="xs:long"/>
+          <xs:element minOccurs="0" name="currencyId_Channel" type="xs:string"/>
+          <xs:element name="currencyId_Customer" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="extendedProperties" nillable="true" type="tns:ExtTxProperty"/>
+          <xs:element name="methodId" type="xs:string"/>
+          <xs:element name="methodName" type="xs:string"/>
+          <xs:element name="methodSequenceId" type="xs:int"/>
+          <xs:element name="pgReference" type="xs:string"/>
+          <xs:element minOccurs="0" name="promotionCode" nillable="true" type="xs:string"/>
+          <xs:element name="reason" type="xs:string"/>
+          <xs:element name="reasonCode" nillable="true" type="xs:string"/>
+          <xs:element name="routeState" type="tns:RouteStateEnum"/>
+          <xs:element name="salesChannelId" type="xs:string"/>
+          <xs:element name="transactionId" type="xs:long"/>
+          <xs:element name="txStateId" type="tns:TxStateEnum"/>
+          <xs:element name="txTypeId" type="tns:TxTypeEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ExtTxProperty">
+        <xs:sequence>
+          <xs:element name="type" type="xs:string"/>
+          <xs:element name="value" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgAuthoriseTxResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="accountBalances" type="tns:AccountBalance"/>
+          <xs:element name="businessDayCode" type="xs:string"/>
+          <xs:element name="riskLevel" type="xs:short"/>
+          <xs:element name="riskMesage" type="xs:string"/>
+          <xs:element name="walletReference" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AccountBalance">
+        <xs:sequence>
+          <xs:element name="type" type="xs:string"/>
+          <xs:element name="value" nillable="true" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="NotEnoughFunds">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LimitExceeded">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgSetupInstructionRequest">
+        <xs:sequence>
+          <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+          <xs:element name="hmac" type="xs:string"/>
+          <xs:element name="instructionData" type="tns:InstructionData"/>
+          <xs:element name="systemId" type="xs:string"/>
+          <xs:element name="systemPartnerCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InstructionData">
+        <xs:sequence>
+          <xs:element name="accountName" type="xs:string"/>
+          <xs:element name="accountNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="bankBranchCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="bankBranchName" type="xs:string"/>
+          <xs:element minOccurs="0" name="bankCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="bankName" type="xs:string"/>
+          <xs:element minOccurs="0" name="bankSwiftCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="cardExpiryDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="cardIssueNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="cardStartOfValidity" type="xs:string"/>
+          <xs:element minOccurs="0" name="city" type="xs:string"/>
+          <xs:element minOccurs="0" name="countryId" type="xs:string"/>
+          <xs:element minOccurs="0" name="dateofBirth" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="extraValue1" type="xs:string"/>
+          <xs:element minOccurs="0" name="extraValue2" type="xs:string"/>
+          <xs:element name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="fixedPhone" type="xs:string"/>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element name="lastName" type="xs:string"/>
+          <xs:element name="methodId" type="xs:string"/>
+          <xs:element name="methodName" type="xs:string"/>
+          <xs:element minOccurs="0" name="mobilePhone" type="xs:string"/>
+          <xs:element minOccurs="0" name="postCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="state" type="xs:string"/>
+          <xs:element minOccurs="0" name="streetAddress" type="xs:string"/>
+          <xs:element minOccurs="0" name="title" type="xs:string"/>
+          <xs:element minOccurs="0" name="uniqueWalletId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgSetupInstructionResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="PgGetTxs4BusinessDayRequest">
+        <xs:sequence>
+          <xs:element name="hmac" type="xs:string"/>
+          <xs:element name="systemId" type="xs:string"/>
+          <xs:element name="systemPartnerCode" type="xs:string"/>
+          <xs:element name="sBussinessDayCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgGetTxs4BusinessDayResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="reconciliationRecords" type="tns:WalletReconciliationData"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="WalletReconciliationData">
+        <xs:sequence>
+          <xs:element name="accountNumber" type="xs:string"/>
+          <xs:element name="channelId" type="xs:long"/>
+          <xs:element name="currentBalanceChange" type="xs:decimal"/>
+          <xs:element name="customerId" type="xs:string"/>
+          <xs:element name="depositLimitReservationChange" type="xs:decimal"/>
+          <xs:element name="pgReference" type="xs:string"/>
+          <xs:element name="systemAccountType" type="xs:string"/>
+          <xs:element name="tsLastChange" type="xs:dateTime"/>
+          <xs:element name="withdrawalReservationChange" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgSendOperatorAlertRequest">
+        <xs:sequence>
+          <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+          <xs:element name="hmac" type="xs:string"/>
+          <xs:element name="operatorAlertId" type="xs:long"/>
+          <xs:element name="operatorAlertTypeId" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" name="parameters" type="tns:MessageParameter"/>
+          <xs:element name="systemId" type="xs:string"/>
+          <xs:element name="systemPartnerCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgSendOperatorAlertResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="acceptanceMessage" type="xs:string"/>
+          <xs:element name="accepted" type="xs:boolean"/>
+          <xs:element name="walletReference" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgGetBalancesRequest">
+        <xs:sequence>
+          <xs:element name="customerIds" type="tns:CustomerIDsRecord"/>
+          <xs:element name="extOperator" type="xs:string"/>
+          <xs:element name="hmac" type="xs:string"/>
+          <xs:element name="systemId" type="xs:string"/>
+          <xs:element name="systemPartnerCode" type="xs:string"/>
+          <xs:element name="tsRequested" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgGetBalancesResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="accountBalances" type="tns:AccountBalance"/>
+          <xs:element name="currencyId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgUpdateTxRequest">
+        <xs:sequence>
+          <xs:element name="hmac" type="xs:string"/>
+          <xs:element name="systemId" type="xs:string"/>
+          <xs:element name="systemPartnerCode" type="xs:string"/>
+          <xs:element name="transactionData" type="tns:UpdatedTransactionData"/>
+          <xs:element name="walletReference" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UpdatedTransactionData">
+        <xs:sequence>
+          <xs:element name="amountCharges" type="xs:decimal"/>
+          <xs:element name="amountCustomer" type="xs:decimal"/>
+          <xs:element name="amountFXCommision" type="xs:decimal"/>
+          <xs:element name="amountTransaction" type="xs:decimal"/>
+          <xs:element name="amountTransactionBC" type="xs:decimal"/>
+          <xs:element name="amountTransactionChannel" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="channelDescription" nillable="true" type="xs:string"/>
+          <xs:element name="channelId" type="xs:long"/>
+          <xs:element name="currencyId_Channel" type="xs:string"/>
+          <xs:element name="currencyId_Customer" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="extendedProperties" nillable="true" type="tns:ExtTxProperty"/>
+          <xs:element minOccurs="0" name="lastProcessingFee4Chargeback" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="lastProcessingFee4ChbkCustomer" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="lastProcessingFee4ExcCustomer" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="lastProcessingFee4Execution" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="lastReportedReasonCode" nillable="true" type="xs:string"/>
+          <xs:element name="lastReportedTxStateId" type="tns:TxStateEnum"/>
+          <xs:element minOccurs="0" name="lastTxCaptureStateId" nillable="true" type="tns:TxCaptureStateEnum"/>
+          <xs:element minOccurs="0" name="message4Customer" type="xs:string"/>
+          <xs:element name="methodId" type="xs:string"/>
+          <xs:element name="methodName" type="xs:string"/>
+          <xs:element name="methodSequenceId" type="xs:int"/>
+          <xs:element name="pgReference" type="xs:string"/>
+          <xs:element minOccurs="0" name="processingFee4Chargeback" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="processingFee4ChbkCustomer" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="processingFee4ExcCustomer" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="processingFee4Execution" nillable="true" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="promotionCode" nillable="true" type="xs:string"/>
+          <xs:element name="reasonCode" nillable="true" type="xs:string"/>
+          <xs:element name="transactionId" type="xs:long"/>
+          <xs:element minOccurs="0" name="txCaptureStateId" nillable="true" type="tns:TxCaptureStateEnum"/>
+          <xs:element name="txStateId" type="tns:TxStateEnum"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PgUpdateTxResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="accountBalances" type="tns:AccountBalance"/>
+          <xs:element name="businessDayCode" type="xs:string"/>
+          <xs:element name="currencyId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="InstructionDataItemType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Title"/>
+          <xs:enumeration value="FirstName"/>
+          <xs:enumeration value="LastName"/>
+          <xs:enumeration value="DateOfBirth"/>
+          <xs:enumeration value="StreetAddress"/>
+          <xs:enumeration value="City"/>
+          <xs:enumeration value="PostCode"/>
+          <xs:enumeration value="State"/>
+          <xs:enumeration value="CountryId"/>
+          <xs:enumeration value="FixedPhone"/>
+          <xs:enumeration value="MobilePhone"/>
+          <xs:enumeration value="Email"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="RouteStateEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Active"/>
+          <xs:enumeration value="Blocked"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="TxStateEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="WaitingForCustomersConfirmation"/>
+          <xs:enumeration value="WaitingForWalletsAuthorisation"/>
+          <xs:enumeration value="WaitingForAuthorisation"/>
+          <xs:enumeration value="ReadyToGo"/>
+          <xs:enumeration value="Cancelled"/>
+          <xs:enumeration value="SentToExecution"/>
+          <xs:enumeration value="ExecutedSuccessfully"/>
+          <xs:enumeration value="Failed"/>
+          <xs:enumeration value="InDoubt"/>
+          <xs:enumeration value="ReferralB"/>
+          <xs:enumeration value="ExecutedManually"/>
+          <xs:enumeration value="ReferralConfirmedByTheOperator"/>
+          <xs:enumeration value="ReferralRejectedByTheOperator"/>
+          <xs:enumeration value="FailedAfterInDoubtOrReferral"/>
+          <xs:enumeration value="WaitingForThe2ndAuthorisation"/>
+          <xs:enumeration value="ReadyForRedirection"/>
+          <xs:enumeration value="InRedirection"/>
+          <xs:enumeration value="Verifying"/>
+          <xs:enumeration value="Reversed"/>
+          <xs:enumeration value="FailedAfterTimeout"/>
+          <xs:enumeration value="SuccessfulPending1stCheck"/>
+          <xs:enumeration value="SuccessfulPending2ndCheck"/>
+          <xs:enumeration value="SuccessfulPendingReversal"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="TxTypeEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Deposit"/>
+          <xs:enumeration value="Withdrawal"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="TxCaptureStateEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="CaptureRequiredIfSuccessful"/>
+          <xs:enumeration value="CaptureNotRequired"/>
+          <xs:enumeration value="WaitingForSchedule"/>
+          <xs:enumeration value="WaitingForExecution"/>
+          <xs:enumeration value="InProcess"/>
+          <xs:enumeration value="InDoubt"/>
+          <xs:enumeration value="Completed"/>
+          <xs:enumeration value="Failed"/>
+          <xs:enumeration value="WaitingForImmediateReversal"/>
+          <xs:enumeration value="CancelledWaitingForReversal"/>
+          <xs:enumeration value="CancelledInProcessOfReversal"/>
+          <xs:enumeration value="CancelledReversed"/>
+          <xs:enumeration value="CancelledReversalFailedOrDoubtful"/>
+          <xs:enumeration value="CapturedManually"/>
+          <xs:enumeration value="CancelledManually"/>
+          <xs:enumeration value="RefundedReversed"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </types>
+  <message name="InvalidCustomerId">
+    <part element="tns:InvalidCustomerId" name="fault"></part>
+  </message>
+  <message name="InvalidAccountNumber">
+    <part element="tns:InvalidAccountNumber" name="fault"></part>
+  </message>
+  <message name="InvalidAccountType">
+    <part element="tns:InvalidAccountType" name="fault"></part>
+  </message>
+  <message name="pgAuthoriseTxResponse">
+    <part element="tns:PgAuthoriseTxResponse" name="PgAuthoriseTxResponse"></part>
+  </message>
+  <message name="pgGetBalances">
+    <part element="tns:PgGetBalancesRequest" name="PgGetBalancesRequest"></part>
+  </message>
+  <message name="PlayerDetailNotSupported">
+    <part element="tns:PlayerDetailNotSupported" name="fault"></part>
+  </message>
+  <message name="LimitExceeded">
+    <part element="tns:LimitExceeded" name="fault"></part>
+  </message>
+  <message name="AccountClosed">
+    <part element="tns:AccountClosed" name="fault"></part>
+  </message>
+  <message name="pgSendOperatorAlert">
+    <part element="tns:PgSendOperatorAlertRequest" name="PgSendOperatorAlertRequest"></part>
+  </message>
+  <message name="pgGetInstructionDetails">
+    <part element="tns:PgGetInstructionDetailsRequest" name="PgGetInstructionDetailsRequest"></part>
+  </message>
+  <message name="pgGetTxs4BusinessDayResponse">
+    <part element="tns:PgGetTxs4BusinessDayResponse" name="PgGetTxs4BusinessDayResponse"></part>
+  </message>
+  <message name="AccountSuspended">
+    <part element="tns:AccountSuspended" name="fault"></part>
+  </message>
+  <message name="SessionExpired">
+    <part element="tns:SessionExpired" name="fault"></part>
+  </message>
+  <message name="NotEnoughFunds">
+    <part element="tns:NotEnoughFunds" name="fault"></part>
+  </message>
+  <message name="InvalidSession">
+    <part element="tns:InvalidSession" name="fault"></part>
+  </message>
+  <message name="pgUpdateTx">
+    <part element="tns:PgUpdateTxRequest" name="PgUpdateTxRequest"></part>
+  </message>
+  <message name="pgSendOperatorAlertResponse">
+    <part element="tns:PgSendOperatorAlertResponse" name="PgSendOperatorAlertResponse"></part>
+  </message>
+  <message name="pgGetCustomerIdentity">
+    <part element="tns:PgGetCustomerIdentityRequest" name="PgGetCustomerIdentityRequest"></part>
+  </message>
+  <message name="InvalidRequest">
+    <part element="tns:InvalidRequest" name="fault"></part>
+  </message>
+  <message name="pgSetupInstructionResponse">
+    <part element="tns:PgSetupInstructionResponse" name="PgSetupInstructionResponse"></part>
+  </message>
+  <message name="pgGetBalancesResponse">
+    <part element="tns:PgGetBalancesResponse" name="PgGetBalancesResponse"></part>
+  </message>
+  <message name="pgSendNotification">
+    <part element="tns:PgSendNotificationRequest" name="PgSendNotificationRequest"></part>
+  </message>
+  <message name="AccountLocked">
+    <part element="tns:AccountLocked" name="fault"></part>
+  </message>
+  <message name="pgSendNotificationResponse">
+    <part element="tns:PgSendNotificationResponse" name="PgSendNotificationResponse"></part>
+  </message>
+  <message name="pgSetupInstruction">
+    <part element="tns:PgSetupInstructionRequest" name="PgSetupInstructionRequest"></part>
+  </message>
+  <message name="pgGetCustomerIdentityResponse">
+    <part element="tns:PgGetCustomerIdentityResponse" name="PgGetCustomerIdentityResponse"></part>
+  </message>
+  <message name="pgUpdateTxResponse">
+    <part element="tns:PgUpdateTxResponse" name="PgUpdateTxResponse"></part>
+  </message>
+  <message name="pgGetTxs4BusinessDay">
+    <part element="tns:PgGetTxs4BusinessDayRequest" name="PgGetTxs4BusinessDayRequest"></part>
+  </message>
+  <message name="InternalError">
+    <part element="tns:InternalError" name="fault"></part>
+  </message>
+  <message name="pgAuthoriseTx">
+    <part element="tns:PgAuthoriseTxRequest" name="PgAuthoriseTxRequest"></part>
+  </message>
+  <message name="pgGetInstructionDetailsResponse">
+    <part element="tns:PgGetInstructionDetailsResponse" name="PgGetInstructionDetailsResponse"></part>
+  </message>
+  <portType name="G2PGGatewayCallbackAPI">
+    <operation name="pgSetupInstruction">
+      <input message="tns:pgSetupInstruction" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSetupInstructionRequest"></input>
+      <output message="tns:pgSetupInstructionResponse" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSetupInstructionResponse"></output>
+      <fault message="tns:InternalError" name="InternalError" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSetupInstruction/Fault/InternalError"></fault>
+    </operation>
+    <operation name="pgAuthoriseTx">
+      <input message="tns:pgAuthoriseTx" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTxRequest"></input>
+      <output message="tns:pgAuthoriseTxResponse" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTxResponse"></output>
+      <fault message="tns:AccountLocked" name="AccountLocked" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTx/Fault/AccountLocked"></fault>
+      <fault message="tns:LimitExceeded" name="LimitExceeded" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTx/Fault/LimitExceeded"></fault>
+      <fault message="tns:AccountSuspended" name="AccountSuspended" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTx/Fault/AccountSuspended"></fault>
+      <fault message="tns:InvalidAccountNumber" name="InvalidAccountNumber" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTx/Fault/InvalidAccountNumber"></fault>
+      <fault message="tns:InvalidAccountType" name="InvalidAccountType" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTx/Fault/InvalidAccountType"></fault>
+      <fault message="tns:InvalidCustomerId" name="InvalidCustomerId" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTx/Fault/InvalidCustomerId"></fault>
+      <fault message="tns:InvalidRequest" name="InvalidRequest" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTx/Fault/InvalidRequest"></fault>
+      <fault message="tns:InternalError" name="InternalError" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTx/Fault/InternalError"></fault>
+      <fault message="tns:NotEnoughFunds" name="NotEnoughFunds" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTx/Fault/NotEnoughFunds"></fault>
+      <fault message="tns:AccountClosed" name="AccountClosed" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTx/Fault/AccountClosed"></fault>
+    </operation>
+    <operation name="pgUpdateTx">
+      <input message="tns:pgUpdateTx" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgUpdateTxRequest"></input>
+      <output message="tns:pgUpdateTxResponse" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgUpdateTxResponse"></output>
+      <fault message="tns:AccountLocked" name="AccountLocked" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgUpdateTx/Fault/AccountLocked"></fault>
+      <fault message="tns:AccountSuspended" name="AccountSuspended" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgUpdateTx/Fault/AccountSuspended"></fault>
+      <fault message="tns:InvalidAccountNumber" name="InvalidAccountNumber" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgUpdateTx/Fault/InvalidAccountNumber"></fault>
+      <fault message="tns:InvalidAccountType" name="InvalidAccountType" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgUpdateTx/Fault/InvalidAccountType"></fault>
+      <fault message="tns:InvalidCustomerId" name="InvalidCustomerId" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgUpdateTx/Fault/InvalidCustomerId"></fault>
+      <fault message="tns:InvalidRequest" name="InvalidRequest" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgUpdateTx/Fault/InvalidRequest"></fault>
+      <fault message="tns:InternalError" name="InternalError" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgUpdateTx/Fault/InternalError"></fault>
+      <fault message="tns:AccountClosed" name="AccountClosed" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgUpdateTx/Fault/AccountClosed"></fault>
+    </operation>
+    <operation name="pgSendNotification">
+      <input message="tns:pgSendNotification" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendNotificationRequest"></input>
+      <output message="tns:pgSendNotificationResponse" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendNotificationResponse"></output>
+      <fault message="tns:AccountLocked" name="AccountLocked" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendNotification/Fault/AccountLocked"></fault>
+      <fault message="tns:AccountSuspended" name="AccountSuspended" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendNotification/Fault/AccountSuspended"></fault>
+      <fault message="tns:InvalidAccountNumber" name="InvalidAccountNumber" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendNotification/Fault/InvalidAccountNumber"></fault>
+      <fault message="tns:InvalidAccountType" name="InvalidAccountType" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendNotification/Fault/InvalidAccountType"></fault>
+      <fault message="tns:InvalidCustomerId" name="InvalidCustomerId" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendNotification/Fault/InvalidCustomerId"></fault>
+      <fault message="tns:InvalidRequest" name="InvalidRequest" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendNotification/Fault/InvalidRequest"></fault>
+      <fault message="tns:InternalError" name="InternalError" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendNotification/Fault/InternalError"></fault>
+      <fault message="tns:AccountClosed" name="AccountClosed" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendNotification/Fault/AccountClosed"></fault>
+    </operation>
+    <operation name="pgSendOperatorAlert">
+      <input message="tns:pgSendOperatorAlert" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendOperatorAlertRequest"></input>
+      <output message="tns:pgSendOperatorAlertResponse" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendOperatorAlertResponse"></output>
+      <fault message="tns:AccountLocked" name="AccountLocked" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendOperatorAlert/Fault/AccountLocked"></fault>
+      <fault message="tns:AccountSuspended" name="AccountSuspended" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendOperatorAlert/Fault/AccountSuspended"></fault>
+      <fault message="tns:InvalidAccountNumber" name="InvalidAccountNumber" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendOperatorAlert/Fault/InvalidAccountNumber"></fault>
+      <fault message="tns:InvalidAccountType" name="InvalidAccountType" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendOperatorAlert/Fault/InvalidAccountType"></fault>
+      <fault message="tns:InvalidCustomerId" name="InvalidCustomerId" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendOperatorAlert/Fault/InvalidCustomerId"></fault>
+      <fault message="tns:InvalidRequest" name="InvalidRequest" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendOperatorAlert/Fault/InvalidRequest"></fault>
+      <fault message="tns:InternalError" name="InternalError" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendOperatorAlert/Fault/InternalError"></fault>
+      <fault message="tns:AccountClosed" name="AccountClosed" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendOperatorAlert/Fault/AccountClosed"></fault>
+    </operation>
+    <operation name="pgGetTxs4BusinessDay">
+      <input message="tns:pgGetTxs4BusinessDay" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetTxs4BusinessDayRequest"></input>
+      <output message="tns:pgGetTxs4BusinessDayResponse" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetTxs4BusinessDayResponse"></output>
+      <fault message="tns:AccountLocked" name="AccountLocked" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetTxs4BusinessDay/Fault/AccountLocked"></fault>
+      <fault message="tns:AccountSuspended" name="AccountSuspended" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetTxs4BusinessDay/Fault/AccountSuspended"></fault>
+      <fault message="tns:InvalidAccountNumber" name="InvalidAccountNumber" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetTxs4BusinessDay/Fault/InvalidAccountNumber"></fault>
+      <fault message="tns:InvalidAccountType" name="InvalidAccountType" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetTxs4BusinessDay/Fault/InvalidAccountType"></fault>
+      <fault message="tns:InvalidCustomerId" name="InvalidCustomerId" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetTxs4BusinessDay/Fault/InvalidCustomerId"></fault>
+      <fault message="tns:InvalidRequest" name="InvalidRequest" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetTxs4BusinessDay/Fault/InvalidRequest"></fault>
+      <fault message="tns:InternalError" name="InternalError" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetTxs4BusinessDay/Fault/InternalError"></fault>
+      <fault message="tns:AccountClosed" name="AccountClosed" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetTxs4BusinessDay/Fault/AccountClosed"></fault>
+    </operation>
+    <operation name="pgGetCustomerIdentity">
+      <input message="tns:pgGetCustomerIdentity" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetCustomerIdentityRequest"></input>
+      <output message="tns:pgGetCustomerIdentityResponse" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetCustomerIdentityResponse"></output>
+      <fault message="tns:InvalidCustomerId" name="InvalidCustomerId" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetCustomerIdentity/Fault/InvalidCustomerId"></fault>
+      <fault message="tns:InvalidRequest" name="InvalidRequest" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetCustomerIdentity/Fault/InvalidRequest"></fault>
+      <fault message="tns:InternalError" name="InternalError" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetCustomerIdentity/Fault/InternalError"></fault>
+      <fault message="tns:InvalidSession" name="InvalidSession" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetCustomerIdentity/Fault/InvalidSession"></fault>
+    </operation>
+    <operation name="pgGetBalances">
+      <input message="tns:pgGetBalances" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetBalancesRequest"></input>
+      <output message="tns:pgGetBalancesResponse" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetBalancesResponse"></output>
+      <fault message="tns:InvalidAccountNumber" name="InvalidAccountNumber" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetBalances/Fault/InvalidAccountNumber"></fault>
+      <fault message="tns:InvalidAccountType" name="InvalidAccountType" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetBalances/Fault/InvalidAccountType"></fault>
+      <fault message="tns:InvalidCustomerId" name="InvalidCustomerId" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetBalances/Fault/InvalidCustomerId"></fault>
+      <fault message="tns:InvalidRequest" name="InvalidRequest" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetBalances/Fault/InvalidRequest"></fault>
+      <fault message="tns:InternalError" name="InternalError" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetBalances/Fault/InternalError"></fault>
+      <fault message="tns:InvalidSession" name="InvalidSession" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetBalances/Fault/InvalidSession"></fault>
+    </operation>
+    <operation name="pgGetInstructionDetails">
+      <input message="tns:pgGetInstructionDetails" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetInstructionDetailsRequest"></input>
+      <output message="tns:pgGetInstructionDetailsResponse" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetInstructionDetailsResponse"></output>
+      <fault message="tns:SessionExpired" name="SessionExpired" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetInstructionDetails/Fault/SessionExpired"></fault>
+      <fault message="tns:PlayerDetailNotSupported" name="PlayerDetailNotSupported" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetInstructionDetails/Fault/PlayerDetailNotSupported"></fault>
+      <fault message="tns:InvalidCustomerId" name="InvalidCustomerId" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetInstructionDetails/Fault/InvalidCustomerId"></fault>
+      <fault message="tns:InvalidRequest" name="InvalidRequest" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetInstructionDetails/Fault/InvalidRequest"></fault>
+      <fault message="tns:InternalError" name="InternalError" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetInstructionDetails/Fault/InternalError"></fault>
+      <fault message="tns:InvalidSession" name="InvalidSession" wsam:Action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetInstructionDetails/Fault/InvalidSession"></fault>
+    </operation>
+  </portType>
+  <binding name="G2PGGatewayCallbackAPIPortBinding" type="tns:G2PGGatewayCallbackAPI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="pgSetupInstruction">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="InternalError">
+        <soap:fault name="InternalError" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="pgAuthoriseTx">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="AccountLocked">
+        <soap:fault name="AccountLocked" use="literal"/>
+      </fault>
+      <fault name="LimitExceeded">
+        <soap:fault name="LimitExceeded" use="literal"/>
+      </fault>
+      <fault name="AccountSuspended">
+        <soap:fault name="AccountSuspended" use="literal"/>
+      </fault>
+      <fault name="InvalidAccountNumber">
+        <soap:fault name="InvalidAccountNumber" use="literal"/>
+      </fault>
+      <fault name="InvalidAccountType">
+        <soap:fault name="InvalidAccountType" use="literal"/>
+      </fault>
+      <fault name="InvalidCustomerId">
+        <soap:fault name="InvalidCustomerId" use="literal"/>
+      </fault>
+      <fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </fault>
+      <fault name="InternalError">
+        <soap:fault name="InternalError" use="literal"/>
+      </fault>
+      <fault name="NotEnoughFunds">
+        <soap:fault name="NotEnoughFunds" use="literal"/>
+      </fault>
+      <fault name="AccountClosed">
+        <soap:fault name="AccountClosed" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="pgUpdateTx">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="AccountLocked">
+        <soap:fault name="AccountLocked" use="literal"/>
+      </fault>
+      <fault name="AccountSuspended">
+        <soap:fault name="AccountSuspended" use="literal"/>
+      </fault>
+      <fault name="InvalidAccountNumber">
+        <soap:fault name="InvalidAccountNumber" use="literal"/>
+      </fault>
+      <fault name="InvalidAccountType">
+        <soap:fault name="InvalidAccountType" use="literal"/>
+      </fault>
+      <fault name="InvalidCustomerId">
+        <soap:fault name="InvalidCustomerId" use="literal"/>
+      </fault>
+      <fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </fault>
+      <fault name="InternalError">
+        <soap:fault name="InternalError" use="literal"/>
+      </fault>
+      <fault name="AccountClosed">
+        <soap:fault name="AccountClosed" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="pgSendNotification">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="AccountLocked">
+        <soap:fault name="AccountLocked" use="literal"/>
+      </fault>
+      <fault name="AccountSuspended">
+        <soap:fault name="AccountSuspended" use="literal"/>
+      </fault>
+      <fault name="InvalidAccountNumber">
+        <soap:fault name="InvalidAccountNumber" use="literal"/>
+      </fault>
+      <fault name="InvalidAccountType">
+        <soap:fault name="InvalidAccountType" use="literal"/>
+      </fault>
+      <fault name="InvalidCustomerId">
+        <soap:fault name="InvalidCustomerId" use="literal"/>
+      </fault>
+      <fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </fault>
+      <fault name="InternalError">
+        <soap:fault name="InternalError" use="literal"/>
+      </fault>
+      <fault name="AccountClosed">
+        <soap:fault name="AccountClosed" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="pgSendOperatorAlert">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="AccountLocked">
+        <soap:fault name="AccountLocked" use="literal"/>
+      </fault>
+      <fault name="AccountSuspended">
+        <soap:fault name="AccountSuspended" use="literal"/>
+      </fault>
+      <fault name="InvalidAccountNumber">
+        <soap:fault name="InvalidAccountNumber" use="literal"/>
+      </fault>
+      <fault name="InvalidAccountType">
+        <soap:fault name="InvalidAccountType" use="literal"/>
+      </fault>
+      <fault name="InvalidCustomerId">
+        <soap:fault name="InvalidCustomerId" use="literal"/>
+      </fault>
+      <fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </fault>
+      <fault name="InternalError">
+        <soap:fault name="InternalError" use="literal"/>
+      </fault>
+      <fault name="AccountClosed">
+        <soap:fault name="AccountClosed" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="pgGetTxs4BusinessDay">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="AccountLocked">
+        <soap:fault name="AccountLocked" use="literal"/>
+      </fault>
+      <fault name="AccountSuspended">
+        <soap:fault name="AccountSuspended" use="literal"/>
+      </fault>
+      <fault name="InvalidAccountNumber">
+        <soap:fault name="InvalidAccountNumber" use="literal"/>
+      </fault>
+      <fault name="InvalidAccountType">
+        <soap:fault name="InvalidAccountType" use="literal"/>
+      </fault>
+      <fault name="InvalidCustomerId">
+        <soap:fault name="InvalidCustomerId" use="literal"/>
+      </fault>
+      <fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </fault>
+      <fault name="InternalError">
+        <soap:fault name="InternalError" use="literal"/>
+      </fault>
+      <fault name="AccountClosed">
+        <soap:fault name="AccountClosed" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="pgGetCustomerIdentity">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="InvalidCustomerId">
+        <soap:fault name="InvalidCustomerId" use="literal"/>
+      </fault>
+      <fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </fault>
+      <fault name="InternalError">
+        <soap:fault name="InternalError" use="literal"/>
+      </fault>
+      <fault name="InvalidSession">
+        <soap:fault name="InvalidSession" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="pgGetBalances">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="InvalidAccountNumber">
+        <soap:fault name="InvalidAccountNumber" use="literal"/>
+      </fault>
+      <fault name="InvalidAccountType">
+        <soap:fault name="InvalidAccountType" use="literal"/>
+      </fault>
+      <fault name="InvalidCustomerId">
+        <soap:fault name="InvalidCustomerId" use="literal"/>
+      </fault>
+      <fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </fault>
+      <fault name="InternalError">
+        <soap:fault name="InternalError" use="literal"/>
+      </fault>
+      <fault name="InvalidSession">
+        <soap:fault name="InvalidSession" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="pgGetInstructionDetails">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="SessionExpired">
+        <soap:fault name="SessionExpired" use="literal"/>
+      </fault>
+      <fault name="PlayerDetailNotSupported">
+        <soap:fault name="PlayerDetailNotSupported" use="literal"/>
+      </fault>
+      <fault name="InvalidCustomerId">
+        <soap:fault name="InvalidCustomerId" use="literal"/>
+      </fault>
+      <fault name="InvalidRequest">
+        <soap:fault name="InvalidRequest" use="literal"/>
+      </fault>
+      <fault name="InternalError">
+        <soap:fault name="InternalError" use="literal"/>
+      </fault>
+      <fault name="InvalidSession">
+        <soap:fault name="InvalidSession" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="G2PGGatewayCallbackAPI">
+    <port binding="tns:G2PGGatewayCallbackAPIPortBinding" name="G2PGGatewayCallbackAPIPort">
+      <soap:address location="http://10.17.37.220:8380/onp-adapter-web/G2PGGatewayCallbackAPI"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGGatewayCallbackAPI</con:endpoint></con:endpoints><con:operation id="ec2377cf-fdc6-4a66-b149-57e8486ddda3" isOneWay="false" action="" name="pgAuthoriseTx" bindingOperationName="pgAuthoriseTx" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6d9738ec-3edb-408e-b466-3af1c629d979" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGGatewayCallbackAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:PgAuthoriseTxRequest>\r
+         <balanceOverrideRequested>?</balanceOverrideRequested>\r
+         <!--Optional:-->\r
+         <cusSessionToken>?</cusSessionToken>\r
+         <customerIds>\r
+            <accountNumber>?</accountNumber>\r
+            <customerId>?</customerId>\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <hmac>?</hmac>\r
+         <instructionId>?</instructionId>\r
+         <limitOverrideRequested>?</limitOverrideRequested>\r
+         <!--Optional:-->\r
+         <opSessionToken>?</opSessionToken>\r
+         <password>?</password>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+         <transactionData>\r
+            <!--Optional:-->\r
+            <amountCharges>?</amountCharges>\r
+            <amountCustomer>?</amountCustomer>\r
+            <!--Optional:-->\r
+            <amountFXCommision>?</amountFXCommision>\r
+            <amountTransaction>?</amountTransaction>\r
+            <!--Optional:-->\r
+            <amountTransactionBC>?</amountTransactionBC>\r
+            <!--Optional:-->\r
+            <amountTransactionChannel>?</amountTransactionChannel>\r
+            <!--Optional:-->\r
+            <channelDescription>?</channelDescription>\r
+            <channelId>?</channelId>\r
+            <!--Optional:-->\r
+            <currencyId_Channel>?</currencyId_Channel>\r
+            <currencyId_Customer>?</currencyId_Customer>\r
+            <!--Zero or more repetitions:-->\r
+            <extendedProperties>\r
+               <type>?</type>\r
+               <value>?</value>\r
+            </extendedProperties>\r
+            <methodId>?</methodId>\r
+            <methodName>?</methodName>\r
+            <methodSequenceId>?</methodSequenceId>\r
+            <pgReference>?</pgReference>\r
+            <!--Optional:-->\r
+            <promotionCode>?</promotionCode>\r
+            <reason>?</reason>\r
+            <reasonCode>?</reasonCode>\r
+            <routeState>?</routeState>\r
+            <salesChannelId>?</salesChannelId>\r
+            <transactionId>?</transactionId>\r
+            <txStateId>?</txStateId>\r
+            <txTypeId>?</txTypeId>\r
+         </transactionData>\r
+      </com:PgAuthoriseTxRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgAuthoriseTxRequest"/></con:call></con:operation><con:operation id="56c6e4aa-aef6-4b91-8bad-0bfda753c61d" isOneWay="false" action="" name="pgGetBalances" bindingOperationName="pgGetBalances" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3204b85f-50cf-4d1d-82e9-e72d8a6584db" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGGatewayCallbackAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:PgGetBalancesRequest>\r
+         <customerIds>\r
+            <accountNumber>?</accountNumber>\r
+            <customerId>?</customerId>\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <extOperator>?</extOperator>\r
+         <hmac>?</hmac>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+         <tsRequested>?</tsRequested>\r
+      </com:PgGetBalancesRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetBalancesRequest"/></con:call></con:operation><con:operation id="99e55c15-8a5e-4995-ba5d-809b4c67327a" isOneWay="false" action="" name="pgGetCustomerIdentity" bindingOperationName="pgGetCustomerIdentity" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d387fb0f-a51a-47f9-bbbc-3fe3fc69e858" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGGatewayCallbackAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:PgGetCustomerIdentityRequest>\r
+         <customerIds>\r
+            <accountNumber>?</accountNumber>\r
+            <customerId>?</customerId>\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <extOperator>?</extOperator>\r
+         <hmac>?</hmac>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+         <tsRequested>?</tsRequested>\r
+      </com:PgGetCustomerIdentityRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetCustomerIdentityRequest"/></con:call></con:operation><con:operation id="192f1cb4-a168-4059-9bf6-c31c65885c5d" isOneWay="false" action="" name="pgGetInstructionDetails" bindingOperationName="pgGetInstructionDetails" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4afdf43d-b2d6-482f-ace7-16d7f98b0021" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGGatewayCallbackAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:PgGetInstructionDetailsRequest>\r
+         <customerIds>\r
+            <accountNumber>?</accountNumber>\r
+            <customerId>?</customerId>\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <extOperator>?</extOperator>\r
+         <hmac>?</hmac>\r
+         <!--1 or more repetitions:-->\r
+         <instructionDataItems>\r
+            <type>?</type>\r
+            <value>?</value>\r
+         </instructionDataItems>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+         <tsRequested>?</tsRequested>\r
+      </com:PgGetInstructionDetailsRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetInstructionDetailsRequest"/></con:call></con:operation><con:operation id="1c9d7f48-ad8e-4925-8703-feeea212d817" isOneWay="false" action="" name="pgGetTxs4BusinessDay" bindingOperationName="pgGetTxs4BusinessDay" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f718fafa-3d48-439f-aadf-4455ec137c11" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGGatewayCallbackAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:PgGetTxs4BusinessDayRequest>\r
+         <hmac>?</hmac>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+         <sBussinessDayCode>?</sBussinessDayCode>\r
+      </com:PgGetTxs4BusinessDayRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgGetTxs4BusinessDayRequest"/></con:call></con:operation><con:operation id="a86c78c9-8983-48c0-8fac-1aa7439b572e" isOneWay="false" action="" name="pgSendNotification" bindingOperationName="pgSendNotification" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b12fb976-3f7e-4f73-b2ac-1341ecc2833f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGGatewayCallbackAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:PgSendNotificationRequest>\r
+         <customerIds>\r
+            <accountNumber>?</accountNumber>\r
+            <customerId>?</customerId>\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <hmac>?</hmac>\r
+         <notificationId>?</notificationId>\r
+         <notificationTypeId>?</notificationTypeId>\r
+         <!--1 or more repetitions:-->\r
+         <parameters>\r
+            <name>?</name>\r
+            <value>?</value>\r
+         </parameters>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:PgSendNotificationRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendNotificationRequest"/></con:call></con:operation><con:operation id="0a824c92-9c5d-446b-be5b-1f6a81b3672a" isOneWay="false" action="" name="pgSendOperatorAlert" bindingOperationName="pgSendOperatorAlert" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2d4a949a-0475-4360-a7cd-0452408bc6bc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGGatewayCallbackAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:PgSendOperatorAlertRequest>\r
+         <customerIds>\r
+            <accountNumber>?</accountNumber>\r
+            <customerId>?</customerId>\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <hmac>?</hmac>\r
+         <operatorAlertId>?</operatorAlertId>\r
+         <operatorAlertTypeId>?</operatorAlertTypeId>\r
+         <!--1 or more repetitions:-->\r
+         <parameters>\r
+            <name>?</name>\r
+            <value>?</value>\r
+         </parameters>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:PgSendOperatorAlertRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSendOperatorAlertRequest"/></con:call></con:operation><con:operation id="63d1bf4d-bf02-470a-8d01-6698cfc12802" isOneWay="false" action="" name="pgSetupInstruction" bindingOperationName="pgSetupInstruction" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="21653af9-1630-4643-8a33-54a1ec737798" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGGatewayCallbackAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:PgSetupInstructionRequest>\r
+         <customerIds>\r
+            <accountNumber>?</accountNumber>\r
+            <customerId>?</customerId>\r
+            <systemAccountType>?</systemAccountType>\r
+         </customerIds>\r
+         <hmac>?</hmac>\r
+         <instructionData>\r
+            <accountName>?</accountName>\r
+            <accountNumber>?</accountNumber>\r
+            <!--Optional:-->\r
+            <bankBranchCode>?</bankBranchCode>\r
+            <!--Optional:-->\r
+            <bankBranchName>?</bankBranchName>\r
+            <!--Optional:-->\r
+            <bankCode>?</bankCode>\r
+            <!--Optional:-->\r
+            <bankName>?</bankName>\r
+            <!--Optional:-->\r
+            <bankSwiftCode>?</bankSwiftCode>\r
+            <!--Optional:-->\r
+            <cardExpiryDate>?</cardExpiryDate>\r
+            <!--Optional:-->\r
+            <cardIssueNumber>?</cardIssueNumber>\r
+            <!--Optional:-->\r
+            <cardStartOfValidity>?</cardStartOfValidity>\r
+            <!--Optional:-->\r
+            <city>?</city>\r
+            <!--Optional:-->\r
+            <countryId>?</countryId>\r
+            <!--Optional:-->\r
+            <dateofBirth>?</dateofBirth>\r
+            <!--Optional:-->\r
+            <email>?</email>\r
+            <!--Optional:-->\r
+            <extraValue1>?</extraValue1>\r
+            <!--Optional:-->\r
+            <extraValue2>?</extraValue2>\r
+            <firstName>?</firstName>\r
+            <!--Optional:-->\r
+            <fixedPhone>?</fixedPhone>\r
+            <id>?</id>\r
+            <lastName>?</lastName>\r
+            <methodId>?</methodId>\r
+            <methodName>?</methodName>\r
+            <!--Optional:-->\r
+            <mobilePhone>?</mobilePhone>\r
+            <!--Optional:-->\r
+            <postCode>?</postCode>\r
+            <!--Optional:-->\r
+            <state>?</state>\r
+            <!--Optional:-->\r
+            <streetAddress>?</streetAddress>\r
+            <!--Optional:-->\r
+            <title>?</title>\r
+            <!--Optional:-->\r
+            <uniqueWalletId>?</uniqueWalletId>\r
+         </instructionData>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+      </com:PgSetupInstructionRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgSetupInstructionRequest"/></con:call></con:operation><con:operation id="f9c81613-ec3f-4290-8f51-52745837719d" isOneWay="false" action="" name="pgUpdateTx" bindingOperationName="pgUpdateTx" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8455dd17-0ea0-489a-a36e-09f8db26ad39" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.17.37.220:8380/onp-adapter-web/G2PGGatewayCallbackAPI</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.finsoft.g2pg">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <com:PgUpdateTxRequest>\r
+         <hmac>?</hmac>\r
+         <systemId>?</systemId>\r
+         <systemPartnerCode>?</systemPartnerCode>\r
+         <transactionData>\r
+            <amountCharges>?</amountCharges>\r
+            <amountCustomer>?</amountCustomer>\r
+            <amountFXCommision>?</amountFXCommision>\r
+            <amountTransaction>?</amountTransaction>\r
+            <amountTransactionBC>?</amountTransactionBC>\r
+            <amountTransactionChannel>?</amountTransactionChannel>\r
+            <!--Optional:-->\r
+            <channelDescription>?</channelDescription>\r
+            <channelId>?</channelId>\r
+            <currencyId_Channel>?</currencyId_Channel>\r
+            <currencyId_Customer>?</currencyId_Customer>\r
+            <!--Zero or more repetitions:-->\r
+            <extendedProperties>\r
+               <type>?</type>\r
+               <value>?</value>\r
+            </extendedProperties>\r
+            <!--Optional:-->\r
+            <lastProcessingFee4Chargeback>?</lastProcessingFee4Chargeback>\r
+            <!--Optional:-->\r
+            <lastProcessingFee4ChbkCustomer>?</lastProcessingFee4ChbkCustomer>\r
+            <!--Optional:-->\r
+            <lastProcessingFee4ExcCustomer>?</lastProcessingFee4ExcCustomer>\r
+            <!--Optional:-->\r
+            <lastProcessingFee4Execution>?</lastProcessingFee4Execution>\r
+            <!--Optional:-->\r
+            <lastReportedReasonCode>?</lastReportedReasonCode>\r
+            <lastReportedTxStateId>?</lastReportedTxStateId>\r
+            <!--Optional:-->\r
+            <lastTxCaptureStateId>?</lastTxCaptureStateId>\r
+            <!--Optional:-->\r
+            <message4Customer>?</message4Customer>\r
+            <methodId>?</methodId>\r
+            <methodName>?</methodName>\r
+            <methodSequenceId>?</methodSequenceId>\r
+            <pgReference>?</pgReference>\r
+            <!--Optional:-->\r
+            <processingFee4Chargeback>?</processingFee4Chargeback>\r
+            <!--Optional:-->\r
+            <processingFee4ChbkCustomer>?</processingFee4ChbkCustomer>\r
+            <!--Optional:-->\r
+            <processingFee4ExcCustomer>?</processingFee4ExcCustomer>\r
+            <!--Optional:-->\r
+            <processingFee4Execution>?</processingFee4Execution>\r
+            <!--Optional:-->\r
+            <promotionCode>?</promotionCode>\r
+            <reasonCode>?</reasonCode>\r
+            <transactionId>?</transactionId>\r
+            <!--Optional:-->\r
+            <txCaptureStateId>?</txCaptureStateId>\r
+            <txStateId>?</txStateId>\r
+         </transactionData>\r
+         <walletReference>?</walletReference>\r
+      </com:PgUpdateTxRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://com.finsoft.g2pg/G2PGGatewayCallbackAPI/pgUpdateTxRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

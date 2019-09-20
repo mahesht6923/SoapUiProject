@@ -1,0 +1,10 @@
+Running SoapUI TestRunner for [CountryInfoService]
+directory: C:\Program Files\SmartBear\SoapUI-5.5.0\bin\.
+command: cmd.exe /C testrunner.bat -sTestSuite3 -cTestCase2 "C:\Users\c-tangutm\Documents\NewHire\Laura\Resort Wallet\Automation Tool\SoapUI\RW4.0\CountryInfoService-soapui-project1.xml"
+SoapUI 5.5.0 TestCase Runner
+Configuring log4j from [C:\Program Files\SmartBear\SoapUI-5.5.0\bin\soapui-log4j.xml]
+
+-------------------------------------------------------------------------------------------------------------------
+cd C:\Program Files\SmartBear\SoapUI-5.5.0\bin\
+testrunner.bat -sTestSuite3 -cTestCase2 "C:\Users\c-tangutm\Documents\NewHire\Laura\Resort Wallet\Automation Tool\SoapUI\RW4.0\CountryInfoService-soapui-project1.xml"
+SoapUI 5.5.0 TestCase Runner
